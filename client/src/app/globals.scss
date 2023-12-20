@@ -25,10 +25,17 @@ textarea {
 body {
 	font-family: var(--var-kanit);
 	overflow-x: hidden;
+	@apply bg-light-gray;
 }
 
 ul,
 ol,
 li {
 	list-style: none;
+}
+
+.wrapper {
+	width: 1270px;
+	margin: 0 auto;
+	padding: 0px 16px;
 }

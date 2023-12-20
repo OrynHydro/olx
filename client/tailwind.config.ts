@@ -10,6 +10,11 @@ const config: Config = {
 			colors: {
 				cyan: '#002f34',
 				gray: '#7F9799',
+				'opacity-gray': 'rgba(121, 151, 153, 0.3)',
+				'light-gray': '#f2f4f5',
+			},
+			transitionDuration: {
+				1000: '1000ms',
 			},
 		},
 	},
