@@ -8,7 +8,9 @@ const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	return (
 		<div className={s.layout}>
 			<Header />
-			{children}
+			<div className={s.main}>
+				<div className='wrapper'>{children}</div>
+			</div>
 			<Footer />
 		</div>
 	)

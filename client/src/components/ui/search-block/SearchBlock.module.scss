@@ -1,0 +1,40 @@
+.search {
+	@apply flex items-center px-4 py-12 w-full;
+
+	.searchForm,
+	.cityForm {
+		@apply flex items-center gap-2 bg-white px-3 py-5 w-8/12 border-bottom-2 border-b-transparent;
+
+		&.active {
+			@apply border-b-cyan;
+		}
+
+		.input {
+			@apply font-normal text-base text-cyan w-full;
+
+			&::placeholder {
+				@apply text-gray;
+			}
+		}
+	}
+
+	.cityForm {
+		@apply w-3/12 border-left border-l-light-gray;
+	}
+
+	.button {
+		@apply flex items-center justify-center gap-2 bg-cyan py-5 px-10 transition-200;
+
+		> span {
+			@apply text-white font-bold text-base;
+		}
+
+		.icon {
+			@apply text-white;
+		}
+
+		&:hover {
+			@apply bg-cyan/90;
+		}
+	}
+}

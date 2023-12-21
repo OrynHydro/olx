@@ -13,11 +13,11 @@
 				@apply flex items-center gap-5 cursor-pointer;
 
 				.icon {
-					@apply text-white transition-all duration-200 ease-in-out;
+					@apply text-white transition-200;
 				}
 
 				> span {
-					@apply text-white font-semibold text-base transition-all duration-200 ease-in-out;
+					@apply text-white font-semibold text-base transition-200;
 				}
 
 				&:hover {
@@ -29,18 +29,18 @@
 			}
 
 			.favourite {
-				@apply text-white transition-all duration-200 ease-in-out;
+				@apply text-white transition-200;
+
 				&:hover {
 					@apply text-gray;
 				}
 			}
 
 			.adding {
-				@apply px-8 py-3 rounded-md bg-white text-cyan font-semibold text-base transition-all duration-200 ease-in-out relative;
+				@apply px-8 py-3 rounded-md bg-white text-cyan font-semibold text-base transition-200 relative;
 
 				&:before {
-					content: '';
-					@apply absolute top-0 left-0 w-0 h-12 rounded-sm transition-all duration-1000 ease-linear bg-opacity-gray;
+					@apply content-empty absolute top-0 left-0 w-0 h-12 rounded-sm transition-1000 bg-gray/30;
 				}
 
 				&:hover::before {

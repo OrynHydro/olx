@@ -7,7 +7,7 @@ import { CiHeart, CiUser } from 'react-icons/ci'
 
 const Header: FC = () => {
 	return (
-		<div className={s.header}>
+		<header className={s.header}>
 			<div className='wrapper'>
 				<div className={s.container}>
 					<Image width={71} height={41} src={'/images/logo/logo.svg'} alt='' />
@@ -29,7 +29,7 @@ const Header: FC = () => {
 					</nav>
 				</div>
 			</div>
-		</div>
+		</header>
 	)
 }
 export default Header
