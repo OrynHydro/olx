@@ -26,7 +26,25 @@ const config: Config = {
 		},
 	},
 	plugins: [
-		plugin(function ({ addUtilities, addComponents }) {
+		plugin(({ addUtilities, addComponents }) => {
+			const generateBorderUtilities = (width: number) => {
+				const directions = ['left', 'top', 'right', 'bottom']
+				const borderUtilities: Record<string, Record<string, string>> = {}
+
+				directions.forEach(direction => {
+					const className = `.border-${direction}-${width}`
+					borderUtilities[className] = {
+						[`border${direction.charAt(0).toUpperCase()}${direction.slice(
+							1
+						)}Width`]: `${width}px`,
+						[`border${direction.charAt(0).toUpperCase()}${direction.slice(
+							1
+						)}Style`]: 'solid',
+					}
+				})
+				return borderUtilities
+			}
+
 			addUtilities({
 				'.transition-200': {
 					transition: '0.2s ease-in-out',
@@ -37,38 +55,8 @@ const config: Config = {
 				'.content-empty': {
 					content: "''",
 				},
-				'.border-left': {
-					borderLeftWidth: '1px',
-					borderLeftStyle: 'solid',
-				},
-				'.border-top': {
-					borderTopWidth: '1px',
-					borderTopStyle: 'solid',
-				},
-				'.border-right': {
-					borderRightWidth: '1px',
-					borderRightStyle: 'solid',
-				},
-				'.border-bottom': {
-					borderBottomWidth: '1px',
-					borderBottomStyle: 'solid',
-				},
-				'.border-left-2': {
-					borderLeftWidth: '2px',
-					borderLeftStyle: 'solid',
-				},
-				'.border-top-2': {
-					borderTopWidth: '2px',
-					borderTopStyle: 'solid',
-				},
-				'.border-right-2': {
-					borderRightWidth: '2px',
-					borderRightStyle: 'solid',
-				},
-				'.border-bottom-2': {
-					borderBottomWidth: '2px',
-					borderBottomStyle: 'solid',
-				},
+				...generateBorderUtilities(1),
+				...generateBorderUtilities(2),
 			})
 			addComponents({
 				'.title': {
