@@ -70,9 +70,9 @@ const config: Config = {
 					lineHeight: '20px',
 					color: constants.cyan,
 					transition: '0.2s ease-in-out',
+					cursor: 'pointer',
 					'&:hover': {
 						color: '#00338A',
-						textDecoration: 'underline',
 					},
 				},
 			})

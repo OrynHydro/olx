@@ -3,7 +3,7 @@ import { ICategory } from '@/interfaces/category.interface'
 export const categoriesData: ICategory[] = [
 	{
 		title: 'Допомога',
-		img: '/images/category/aid.png',
+		img: '/images/category/help.png',
 		color: '#f2f3f5',
 		link: '/help',
 		subcategories: [
@@ -275,6 +275,466 @@ export const categoriesData: ICategory[] = [
 				title: 'Служба в Силах оборони',
 				link: '/military-service',
 			},
+			{
+				title: 'Робота швачкою',
+				link: '/seamstress',
+			},
 		],
+	},
+	{
+		title: 'Тварини',
+		img: '/images/category/pets.png',
+		color: '#c8f8f6',
+		link: '/animals',
+		subcategories: [
+			{
+				title: 'Собаки',
+				link: '/dogs',
+			},
+			{
+				title: 'Коти',
+				link: '/cats',
+			},
+			{
+				title: 'Інші тварини',
+				link: '/other',
+			},
+			{
+				title: 'Зоотовари',
+				link: '/pet-supplies',
+			},
+			{
+				title: 'Бюро знахідок',
+				link: '/lost-and-found',
+			},
+			{
+				title: "В'язка",
+				link: '/breeding',
+			},
+			{
+				title: 'Пташки',
+				link: '/birds',
+			},
+			{
+				title: 'Гризуни',
+				link: '/rodents',
+			},
+			{
+				title: 'Рептилії',
+				link: '/reptiles',
+			},
+			{
+				title: 'Акваріумістика',
+				link: '/aquariums',
+			},
+			{
+				title: 'Сільгосп тварини',
+				link: '/farm-animals',
+			},
+			{
+				title: "Безкоштовно (тварини і в'язка)",
+				link: '/free-animals-breeding',
+			},
+		],
+	},
+	{
+		title: 'Дім і сад',
+		link: '/household',
+		img: '/images/category/household.png',
+		color: '#ffd6c9',
+		subcategories: [
+			{
+				title: 'Кімнатні рослини',
+				link: '/indoor-plants',
+			},
+			{
+				title: 'Меблі',
+				link: '/furniture',
+			},
+			{
+				title: "Предмети інтер'єру",
+				link: '/interior-items',
+			},
+			{
+				title: 'Інші товари для дому',
+				link: '/other',
+			},
+			{
+				title: 'Продукти харчування / напої',
+				link: '/food_beverages',
+			},
+			{
+				title: 'Господарський інвентар / побутова хімія',
+				link: '/household-inventory_chemicals',
+			},
+			{
+				title: 'Садовий інвентар',
+				link: '/garden-inventory',
+			},
+			{
+				title: 'Канцтовари / витратні матеріали',
+				link: '/stationery_consumables',
+			},
+			{
+				title: 'Будівництво / ремонт',
+				link: '/construction_repair',
+			},
+			{
+				title: 'Інструменти',
+				link: '/tools',
+			},
+			{
+				title: 'Посуд / кухонне приладдя',
+				link: '/dishes_kitchenware',
+			},
+			{
+				title: 'Сад / город',
+				link: '/garden',
+			},
+		],
+	},
+	{
+		title: 'Електроніка',
+		link: '/electronics',
+		img: '/images/category/electronic.png',
+		color: '#ffce32',
+		subcategories: [
+			{
+				title: "Комп'ютери та комплектуючі",
+				link: '/computers_components',
+			},
+			{
+				title: 'Телефони та аксесуари',
+				link: '/phones_accessories',
+			},
+			{
+				title: 'Ігри та ігрові приставки',
+				link: '/games_gaming-consoles',
+			},
+			{
+				title: 'Техніка для кухні',
+				link: '/kitchen-appliances',
+			},
+			{
+				title: 'Техніка для дому',
+				link: '/home-appliances',
+			},
+			{
+				title: 'Індивідуальний догляд',
+				link: '/personal-care',
+			},
+			{
+				title: 'Кліматичне обладнання',
+				link: '/climate-equipment',
+			},
+			{
+				title: 'Аксесуари й комплектуючі',
+				link: '/accessories_components',
+			},
+			{
+				title: 'Аудіотехніка',
+				link: '/audio-equipment',
+			},
+			{
+				title: 'Тв / відеотехніка',
+				link: '/tv_video-equipment',
+			},
+			{
+				title: 'Фото / відео',
+				link: '/photo_video',
+			},
+			{
+				title: 'Інша електроніка',
+				link: '/other',
+			},
+			{
+				title: 'Ноутбуки та аксесуари',
+				link: '/laptops_accessories',
+			},
+			{
+				title: 'Планшети / ел. книги та аксесуари',
+				link: '/tablets_ebooks_accessories',
+			},
+			{
+				title: 'Ремонт та обслуговування техніки',
+				link: '/electronics_repair-maintenance',
+			},
+		],
+	},
+	{
+		title: 'Бізнес та послуги',
+		link: '/services',
+		color: '#ceddff',
+		img: '/images/category/services.png',
+		subcategories: [
+			{
+				title: 'Продаж бізнесу',
+				link: '/business-for-sale',
+			},
+			{
+				title: 'Продаж обладнання для бізнесу',
+				link: '/business-equipment-for-sale',
+			},
+			{
+				title: 'Авто / мото послуги',
+				link: '/auto_moto',
+			},
+			{
+				title: 'Інші послуги',
+				link: '/other',
+			},
+			{
+				title: 'Будівництво та ремонт',
+				link: '/construction_repair',
+			},
+			{
+				title: 'Туризм / іміграція',
+				link: '/tourism_immigration',
+			},
+			{
+				title: 'Перевезення та послуги спецтехніки',
+				link: '/transportation-special-equipment',
+			},
+			{
+				title: "Краса / здоров'я",
+				link: '/beauty_health',
+			},
+			{
+				title: 'Послуги для тварин',
+				link: '/services-for-animals',
+			},
+			{
+				title: 'Фото та відеозйомка',
+				link: '/photo-video',
+			},
+			{
+				title: 'Послуги освіти та спорту',
+				link: '/education-sports',
+			},
+			{
+				title: 'Догляд за дітьми та літніми людьми',
+				link: '/care-for-children-elderly',
+			},
+			{
+				title: 'Сировина / матеріали',
+				link: '/raw_materials',
+			},
+			{
+				title: 'Ремонт та обслуговування техніки',
+				link: '/electronics-repair-maintenance',
+			},
+			{
+				title: 'Побутові послуги',
+				link: '/household',
+			},
+			{
+				title: 'Клінінг',
+				link: '/cleaning',
+			},
+			{
+				title: 'Організація свят',
+				link: '/event-organization',
+			},
+			{
+				title: 'Ритуальні послуги',
+				link: '/funeral',
+			},
+			{
+				title: 'Прийом вторсировини',
+				link: '/recycling',
+			},
+			{
+				title: 'Ділові послуги',
+				link: '/business',
+			},
+		],
+	},
+	{
+		title: 'Оренда та прокат',
+		link: '/rent',
+		color: '#c8f8f6',
+		img: '/images/category/rent.png',
+		subcategories: [
+			{
+				title: 'Оренда транспорту та спецтехніки',
+				link: '/rental-transport_special-equipment',
+			},
+			{
+				title: 'Прокат велосипедів і мото',
+				link: '/bike-moto',
+			},
+			{
+				title: 'Оренда обладнання',
+				link: '/equipment',
+			},
+			{
+				title: 'Прокат інструментів',
+				link: '/tool',
+			},
+			{
+				title: 'Прокат товарів мед призначення',
+				link: '/medical-equipment',
+			},
+			{
+				title: 'Прокат техніки та електроніки',
+				link: '/technology_electronics',
+			},
+			{
+				title: 'Прокат товарів для заходів',
+				link: '/event',
+			},
+			{
+				title: 'Прокат спорт і туристичних товарів',
+				link: '/sports-tourist',
+			},
+			{
+				title: 'Прокат одягу та аксесуарів',
+				link: '/clothing_accessories',
+			},
+			{
+				title: 'Прокат дитячого одягу та товарів',
+				link: '/childrens_clothing',
+			},
+			{
+				title: 'Інші товари на прокат',
+				link: '/other',
+			},
+		],
+	},
+	{
+		title: 'Мода і стиль',
+		link: '/fashion',
+		img: '/images/category/fashion.png',
+		color: '#ffd6c9',
+		subcategories: [
+			{
+				title: "Краса / здоров'я",
+				link: '/beauty_health',
+			},
+			{
+				title: 'Для весілля',
+				link: '/wedding',
+			},
+			{
+				title: 'Аксесуари',
+				link: '/accessories',
+			},
+			{
+				title: 'Наручні годинники',
+				link: '/wristwatches',
+			},
+			{
+				title: 'Подарунки',
+				link: '/gifts',
+			},
+			{
+				title: 'Мода різне',
+				link: '/fashion-various',
+			},
+			{
+				title: 'Чоловіча білизна та плавки',
+				link: '/mens-underwear_swimwear',
+			},
+			{
+				title: 'Жіноча білизна та купальники',
+				link: '/womens-underwear_swimwear',
+			},
+			{
+				title: 'Одяг для вагітних',
+				link: '/maternity-clothing',
+			},
+			{
+				title: 'Головні убори',
+				link: '/headwear',
+			},
+			{
+				title: 'Чоловіче взуття',
+				link: '/mens-footwear',
+			},
+			{
+				title: 'Жіноче взуття',
+				link: '/womens-footwear',
+			},
+			{
+				title: 'Жіночий одяг',
+				link: '/womens-clothing',
+			},
+			{
+				title: 'Чоловічий одяг',
+				link: '/mens-clothing',
+			},
+			{
+				title: 'Спецодяг, спецвзуття та аксесуари',
+				link: '/workwear_footwear_accessories',
+			},
+		],
+	},
+	{
+		title: 'Хобі, відпочинок і спорт',
+		link: '/hobby',
+		img: '/images/category/hobby.png',
+		color: '#fff6d9',
+		subcategories: [
+			{
+				title: 'Музичні інструменти',
+				link: '/musical-instruments',
+			},
+			{
+				title: 'Книги / журнали',
+				link: '/books_magazines',
+			},
+			{
+				title: 'Антикваріат / колекції',
+				link: '/antiques_collectibles',
+			},
+			{
+				title: 'Квитки',
+				link: '/tickets',
+			},
+			{
+				title: 'Пошук попутників',
+				link: '/travel-companions',
+			},
+			{
+				title: 'Пошук гуртів / музикантів',
+				link: '/bands-musicians-search',
+			},
+			{
+				title: 'CD / DVD / Платівки',
+				link: '/cd_dvd_vinyl',
+			},
+			{
+				title: 'Спорт / відпочинок',
+				link: '/sports_recreation',
+			},
+			{
+				title: 'Інше',
+				link: '/other',
+			},
+			{
+				title: 'Мілітарія',
+				link: '/military',
+			},
+			{
+				title: 'Вело',
+				link: '/bicycles',
+			},
+			{
+				title: 'Квадрокоптери та аксесуари',
+				link: '/quadcopters-accessories',
+			},
+		],
+	},
+	{
+		title: 'Віддам безкоштовно',
+		link: '/free',
+		img: '/images/category/free.png',
+		color: '#3a77ff',
+	},
+	{
+		title: 'Обмін',
+		link: '/exchange',
+		img: '/images/category/exchange.png',
+		color: '#23e5db',
 	},
 ]

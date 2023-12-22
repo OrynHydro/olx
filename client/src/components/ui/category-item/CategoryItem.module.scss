@@ -1,0 +1,7 @@
+.category {
+	@apply flex flex-col items-center gap-4 rounded-full h-36 cursor-pointer mx-auto;
+
+	.imgBlock {
+		@apply rounded-full;
+	}
+}

@@ -1,5 +1,5 @@
 .footer {
-	@apply flex items-center w-full border-t border-solid border-t-gray;
+	@apply flex items-center w-full border-t border-solid border-t-gray mt-8;
 
 	.container {
 		@apply flex flex-col gap-2 flex-wrap w-full h-44 py-8;
