@@ -3,10 +3,10 @@
 
 	.searchForm,
 	.cityForm {
-		@apply flex items-center gap-2 bg-white px-3 py-5 w-8/12 border-bottom-2 border-b-transparent;
+		@apply flex items-center gap-2 bg-white px-3 py-5 w-8/12 border-bottom-2-transparent;
 
 		&.active {
-			@apply border-b-cyan;
+			@apply border-bottom-2-cyan;
 		}
 
 		.input {
@@ -19,7 +19,7 @@
 	}
 
 	.cityForm {
-		@apply w-3/12 border-left-1 border-l-light-gray;
+		@apply w-3/12 border-left-1-light-gray;
 	}
 
 	.button {

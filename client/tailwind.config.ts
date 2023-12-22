@@ -26,22 +26,27 @@ const config: Config = {
 		},
 	},
 	plugins: [
-		plugin(({ addUtilities, addComponents }) => {
+		plugin(({ addUtilities, addComponents, theme }) => {
 			const generateBorderUtilities = (width: number) => {
 				const directions = ['left', 'top', 'right', 'bottom']
 				const borderUtilities: Record<string, Record<string, string>> = {}
 
 				directions.forEach(direction => {
-					const className = `.border-${direction}-${width}`
-					borderUtilities[className] = {
-						[`border${direction.charAt(0).toUpperCase()}${direction.slice(
-							1
-						)}Width`]: `${width}px`,
-						[`border${direction.charAt(0).toUpperCase()}${direction.slice(
-							1
-						)}Style`]: 'solid',
+					for (const [key, value] of Object.entries(
+						theme('colors') as Record<string, string>
+					)) {
+						const classNameDirectional = `.border-${direction}-${width}-${key}`
+						borderUtilities[classNameDirectional] = {
+							[`border-${direction}`]: `${width}px solid ${value}`,
+						}
+
+						const classNameAll = `.border-${width}-${key}`
+						borderUtilities[classNameAll] = {
+							border: `${width}px solid ${value}`,
+						}
 					}
 				})
+
 				return borderUtilities
 			}
 
