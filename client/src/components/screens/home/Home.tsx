@@ -7,9 +7,12 @@ import CategoryItem from '@/components/ui/category-item/CategoryItem'
 import Link from 'next/link'
 import { FaChevronRight } from 'react-icons/fa6'
 import { ICategory } from '@/interfaces/category.interface'
+import { useRouter } from 'next/navigation'
 
 const Home: FC = () => {
 	const [active, setActive] = useState<ICategory | null>(null)
+
+	const router = useRouter()
 	return (
 		<div>
 			<SearchBlock />
@@ -17,12 +20,18 @@ const Home: FC = () => {
 				<h1 className={s.title}>Розділи на сервісі OLX</h1>
 				<div className={s.categories}>
 					{categoriesData.map((category, index) => (
-						<CategoryItem
-							active={active}
-							setActive={setActive}
-							category={category}
-							key={index}
-						/>
+						<div
+							onClick={() =>
+								!category.subcategories && router.push(category.link)
+							}
+						>
+							<CategoryItem
+								active={active}
+								setActive={setActive}
+								category={category}
+								key={index}
+							/>
+						</div>
 					))}
 				</div>
 
@@ -34,10 +43,14 @@ const Home: FC = () => {
 							<span className={s.categoryTitle}> в {active.title}</span>
 						</Link>
 						<hr className={s.hr} />
-						{active?.subcategories && (
+						{active.subcategories && active.subcategories.length > 0 && (
 							<div className={s.subcategories}>
 								{active.subcategories.map((subcategory, index) => (
-									<Link className={s.title} href={subcategory.link} key={index}>
+									<Link
+										className={s.title}
+										href={`${active.link}${subcategory.link}`}
+										key={index}
+									>
 										<FaChevronRight />
 										<span className='title font-normal text-sm'>
 											{subcategory.title}

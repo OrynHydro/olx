@@ -18,15 +18,15 @@ const CategoryItem: FC<ICategoryItemProps> = ({
 	return (
 		<div
 			className={s.category}
-			onClick={() =>
-				setActive(
-					active
-						? active.title === category.title
-							? null
-							: category
-						: category
-				)
-			}
+			onClick={() => {
+				if (category.subcategories) {
+					if (active && active.title === category.title) {
+						setActive(null)
+					} else {
+						setActive(category)
+					}
+				}
+			}}
 		>
 			{category.img && (
 				<div

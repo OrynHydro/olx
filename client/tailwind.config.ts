@@ -17,11 +17,15 @@ const config: Config = {
 		colors: {
 			transparent: colors.transparent,
 			white: colors.white,
+			black: colors.black,
 			...constants,
 		},
 		extend: {
 			minHeight: {
-				main: 'calc(100vh - 249px)',
+				main: 'calc(100vh - 281px)',
+			},
+			height: {
+				'not-found': 'calc(100vh + 400px)',
 			},
 		},
 	},
@@ -52,7 +56,7 @@ const config: Config = {
 
 			addUtilities({
 				'.transition-200': {
-					transition: '0.2s ease-in-out',
+					transition: 'background 0.2s ease-in-out',
 				},
 				'.transition-1000': {
 					transition: '1s linear',
