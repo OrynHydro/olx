@@ -1,0 +1,31 @@
+.field {
+	@apply flex flex-col mb-3;
+
+	> label {
+		@apply mb-1 text-cyan;
+
+		.title {
+			@apply text-sm;
+		}
+	}
+
+	.inputBlock {
+		@apply flex items-center relative w-96 h-12 text-base text-cyan rounded-sm bg-light-gray;
+
+		.input {
+			@apply h-full w-full py-2 px-3 pr-11 border-bottom-2-transparent;
+
+			&:focus {
+				@apply border-bottom-2-cyan;
+			}
+
+			&.error:focus {
+				@apply border-bottom-2-red;
+			}
+		}
+
+		.icon {
+			@apply absolute right-0 mr-3;
+		}
+	}
+}

@@ -1,0 +1,19 @@
+.auth {
+	@apply w-full h-screen flex flex-col justify-center items-center bg-blue;
+
+	.form {
+		@apply p-4 bg-white rounded-sm flex flex-col gap-4;
+
+		.switch {
+			@apply w-full flex items-center justify-center;
+
+			.item {
+				@apply cursor-pointer border-bottom-1-gray font-normal text-sm text-gray pb-5 text-center w-1/2;
+
+				&.active {
+					@apply border-bottom-2-cyan text-cyan font-bold;
+				}
+			}
+		}
+	}
+}

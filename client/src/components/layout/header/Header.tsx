@@ -19,7 +19,7 @@ const Header: FC = () => {
 						<Link href={'#'} className={s.favourite}>
 							<CiHeart fontSize={22} strokeWidth={1} />
 						</Link>
-						<Link href={'#'} className={s.profile}>
+						<Link href={'/auth?tab=login'} className={s.profile}>
 							<CiUser fontSize={22} className={s.icon} strokeWidth={1} />
 							<span>Ваш профіль</span>
 						</Link>

@@ -14,7 +14,7 @@ const Home: FC = () => {
 
 	const router = useRouter()
 	return (
-		<div>
+		<div className='wrapper'>
 			<SearchBlock />
 			<div className={s.categoriesBlock}>
 				<h1 className={s.title}>Розділи на сервісі OLX</h1>

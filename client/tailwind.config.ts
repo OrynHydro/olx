@@ -6,6 +6,8 @@ const constants = {
 	cyan: '#002f34',
 	gray: 'rgba(121, 151, 153, <alpha-value>)',
 	'light-gray': '#f2f4f5',
+	blue: '#3a77ff',
+	red: '#ff5636',
 }
 
 const config: Config = {
@@ -41,12 +43,16 @@ const config: Config = {
 					)) {
 						const classNameDirectional = `.border-${direction}-${width}-${key}`
 						borderUtilities[classNameDirectional] = {
-							[`border-${direction}`]: `${width}px solid ${value}`,
+							[`border-${direction}`]: `${width}px solid ${
+								key === 'gray' ? 'rgba(121, 151, 153)' : value
+							}`,
 						}
 
 						const classNameAll = `.border-${width}-${key}`
 						borderUtilities[classNameAll] = {
-							border: `${width}px solid ${value}`,
+							border: `${width}px solid ${
+								key === 'gray' ? 'rgba(121, 151, 153)' : value
+							}`,
 						}
 					}
 				})
