@@ -2,7 +2,7 @@
 	@apply w-full h-screen flex flex-col justify-center items-center bg-blue;
 
 	.form {
-		@apply p-4 bg-white rounded-sm flex flex-col gap-4;
+		@apply p-4 bg-white rounded-md flex flex-col gap-4;
 
 		.switch {
 			@apply w-full flex items-center justify-center;

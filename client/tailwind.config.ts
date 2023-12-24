@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 import plugin from 'tailwindcss/plugin'
 
 const constants = {
-	cyan: '#002f34',
+	cyan: 'rgba(0, 47, 52, <alpha-value>)',
 	gray: 'rgba(121, 151, 153, <alpha-value>)',
 	'light-gray': '#f2f4f5',
 	blue: '#3a77ff',
@@ -44,14 +44,22 @@ const config: Config = {
 						const classNameDirectional = `.border-${direction}-${width}-${key}`
 						borderUtilities[classNameDirectional] = {
 							[`border-${direction}`]: `${width}px solid ${
-								key === 'gray' ? 'rgba(121, 151, 153)' : value
+								key === 'gray'
+									? 'rgba(121, 151, 153)'
+									: key === 'cyan'
+									? 'rgba(0, 47, 52)'
+									: value
 							}`,
 						}
 
 						const classNameAll = `.border-${width}-${key}`
 						borderUtilities[classNameAll] = {
 							border: `${width}px solid ${
-								key === 'gray' ? 'rgba(121, 151, 153)' : value
+								key === 'gray'
+									? 'rgba(121, 151, 153)'
+									: key === 'cyan'
+									? 'rgba(0, 47, 52)'
+									: value
 							}`,
 						}
 					}

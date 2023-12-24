@@ -1,0 +1,7 @@
+.form {
+	@apply w-96;
+
+	.desc {
+		@apply w-96 inline-block text-center text-sm text-black font-medium mt-5;
+	}
+}

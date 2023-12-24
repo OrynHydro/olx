@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const loginSchema = z.object({
+export const registerSchema = z.object({
 	email: z
 		.string()
 		.email({
@@ -10,8 +10,8 @@ export const loginSchema = z.object({
 			message: 'Не забудьте ввести електронну пошту',
 		}),
 	password: z.string().min(8, {
-		message: 'Ви впевнені, що це правильний пароль? Він надто короткий.',
+		message: 'Пароль повинен мати мінімум 8 символів',
 	}),
 })
 
-export type TLoginSchema = z.infer<typeof loginSchema>
+export type TRegisterSchema = z.infer<typeof registerSchema>

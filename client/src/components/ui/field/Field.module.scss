@@ -24,8 +24,16 @@
 			}
 		}
 
-		.icon {
-			@apply absolute right-0 mr-3;
+		.icons {
+			@apply absolute right-0 mr-3 flex items-center;
+
+			.icon {
+				@apply relative right-0 mr-3;
+			}
+
+			.hind {
+				@apply relative mr-3 cursor-pointer;
+			}
 		}
 	}
 }

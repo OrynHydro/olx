@@ -37,7 +37,7 @@
 			}
 
 			.adding {
-				@apply px-8 py-3 rounded-md bg-white text-cyan font-semibold text-base transition-200 relative;
+				@apply px-8 py-3 rounded-md bg-white text-cyan font-semibold text-base relative;
 
 				&:before {
 					@apply content-empty absolute top-0 left-0 w-0 h-12 rounded-sm transition-1000 bg-gray/30;

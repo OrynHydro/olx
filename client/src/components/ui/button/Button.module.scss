@@ -1,0 +1,15 @@
+.button {
+	@apply w-full h-12 text-center relative bg-cyan rounded-md py-2 px-3 text-base text-white font-bold cursor-pointer mt-5;
+
+	&:disabled {
+		@apply bg-gray/30 cursor-not-allowed text-cyan/30;
+	}
+
+	&:before {
+		@apply content-empty absolute top-0 left-0 w-0 h-12 rounded-sm transition-1000 bg-gray/30;
+	}
+
+	&:hover::before:not(:disabled) {
+		@apply w-full;
+	}
+}
