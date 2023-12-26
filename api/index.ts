@@ -1,14 +1,35 @@
-import express, { Express, Request, Response } from 'express'
+import express, { Application, Request, Response } from 'express'
 import dotenv from 'dotenv'
-
-dotenv.config()
+import cors from 'cors'
+import mongoose from 'mongoose'
+import cookieParser from 'cookie-parser'
 
 import authRoute from './routes/auth'
 
-const app: Express = express()
+// app config
+
+const app: Application = express()
 const port = 8800
 
-// app.use(express.json())
+// Middleware
+
+dotenv.config({ path: '.env.local' })
+app.use(cors())
+app.use(express.json())
+app.use(cookieParser())
+
+// DB connection
+
+mongoose
+	.connect(process.env.MONGO_URL!)
+	.then(() => {
+		console.log('Connected to MongoDB')
+	})
+	.catch(error => {
+		console.error('Error connecting to MongoDB: ', error)
+	})
+
+// Routes
 
 app.use('/auth', authRoute)
 
