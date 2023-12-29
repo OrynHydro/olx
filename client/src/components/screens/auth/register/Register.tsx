@@ -22,7 +22,9 @@ const Register: FC = () => {
 	const passwordValue = watch('password')
 
 	const onSubmit: SubmitHandler<TRegisterSchema> = async data => {
-		await axios.get('/').then(res => console.log(res.data))
+		await axios
+			.post('/api/auth/register', data)
+			.then(res => console.log(res.data))
 	}
 
 	return (

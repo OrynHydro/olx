@@ -22,7 +22,7 @@ const Login: FC = () => {
 	const passwordValue = watch('password')
 
 	const onSubmit: SubmitHandler<TLoginSchema> = async data => {
-		await axios.post('/api/auth').then(res => console.log(res.data))
+		await axios.post('/api/auth/login', data).then(res => console.log(res.data))
 	}
 
 	return (

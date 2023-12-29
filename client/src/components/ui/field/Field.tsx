@@ -32,7 +32,7 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 					className={error ? `${s.input} ${s.error}` : s.input}
 					{...rest}
 					ref={ref}
-					type={label ? (!hind ? 'password' : 'text') : 'email'}
+					type={label === 'Пароль' ? (!hind ? 'password' : 'text') : 'email'}
 				/>
 				<div className={s.icons}>
 					{label === 'Пароль' &&
