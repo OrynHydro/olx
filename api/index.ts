@@ -1,10 +1,11 @@
 import express, { Application } from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
+import { MongoConnect } from './middleware/mongo-connect'
 
 import authRoute from './routes/auth'
+import mailgunRoute from './routes/mailgun'
 
 // app config
 
@@ -20,17 +21,11 @@ app.use(cookieParser())
 
 // DB connection
 
-mongoose
-	.connect(process.env.MONGO_URL!)
-	.then(() => {
-		console.log('Connected to MongoDB')
-	})
-	.catch(error => {
-		console.error('Error connecting to MongoDB: ', error)
-	})
+MongoConnect()
 
 // Routes
 
 app.use('/auth', authRoute)
+app.use('/mailgun', mailgunRoute)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))

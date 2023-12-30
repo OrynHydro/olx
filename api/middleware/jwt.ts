@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt, { VerifyErrors } from 'jsonwebtoken'
+import { IUser } from '../models/User'
 
 const secretKey = process.env.JWT_SECRET!
 
@@ -14,12 +15,12 @@ export const authenticateToken = (
 		return res.sendStatus(401)
 	}
 
-	jwt.verify(token, secretKey, (err: VerifyErrors | null, user: any) => {
+	jwt.verify(token, secretKey, (err: VerifyErrors | null, decoded: any) => {
 		if (err) {
 			return res.sendStatus(403)
 		}
 
-		// Теперь TypeScript знает о свойстве user на объекте Request
+		const user = decoded as IUser
 		req.user = user
 		next()
 	})

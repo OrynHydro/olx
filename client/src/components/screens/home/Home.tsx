@@ -24,12 +24,12 @@ const Home: FC = () => {
 							onClick={() =>
 								!category.subcategories && router.push(category.link)
 							}
+							key={index}
 						>
 							<CategoryItem
 								active={active}
 								setActive={setActive}
 								category={category}
-								key={index}
 							/>
 						</div>
 					))}
