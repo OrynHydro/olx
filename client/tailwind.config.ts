@@ -29,6 +29,9 @@ const config: Config = {
 			height: {
 				'not-found': 'calc(100vh + 400px)',
 			},
+			width: {
+				'92': '23rem',
+			},
 		},
 	},
 	plugins: [
@@ -70,7 +73,7 @@ const config: Config = {
 
 			addUtilities({
 				'.transition-200': {
-					transition: 'background 0.2s ease-in-out',
+					transition: '0.2s ease-in-out',
 				},
 				'.transition-1000': {
 					transition: '1s linear',

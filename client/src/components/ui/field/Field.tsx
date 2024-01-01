@@ -2,8 +2,6 @@
 import { InputHTMLAttributes, forwardRef, useState } from 'react'
 import ErrorText from './error-text/ErrorText'
 import s from './Field.module.scss'
-import { UseFormWatch } from 'react-hook-form'
-import { TLoginSchema } from '@/libs/schemas/login.schema'
 import { CiCircleAlert } from 'react-icons/ci'
 import { IoMdCheckmark } from 'react-icons/io'
 import { FiEye } from 'react-icons/fi'
@@ -14,6 +12,7 @@ interface IField
 	label: string
 	error?: string
 	value: string
+	verificationCode?: string | null
 }
 
 const Field = forwardRef<HTMLInputElement, IField>(function Comp(
@@ -32,7 +31,15 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 					className={error ? `${s.input} ${s.error}` : s.input}
 					{...rest}
 					ref={ref}
-					type={label === 'Пароль' ? (!hind ? 'password' : 'text') : 'email'}
+					type={
+						label === 'Пароль'
+							? !hind
+								? 'password'
+								: 'text'
+							: label === 'Електронна пошта'
+							? 'email'
+							: 'text'
+					}
 				/>
 				<div className={s.icons}>
 					{label === 'Пароль' &&

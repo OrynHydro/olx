@@ -1,7 +1,41 @@
 .form {
-	@apply w-96;
+	@apply w-92;
 
 	.desc {
-		@apply w-96 inline-block text-sm text-black font-medium mt-5;
+		@apply w-92 inline-block text-sm text-black font-medium mt-5;
+	}
+
+	.verification {
+		@apply flex flex-col gap-6;
+
+		.top {
+			@apply flex items-center gap-4;
+
+			.link {
+				.chevron {
+					@apply text-cyan transition-200;
+				}
+
+				&:hover .chevron {
+					@apply text-cyan/80;
+				}
+			}
+
+			.title {
+				@apply text-3xl font-extrabold text-cyan tracking-wider ml-5;
+			}
+		}
+
+		.mid {
+			@apply flex flex-col gap-2;
+
+			.title {
+				@apply font-normal text-lg text-cyan;
+
+				.email {
+					@apply font-bold;
+				}
+			}
+		}
 	}
 }

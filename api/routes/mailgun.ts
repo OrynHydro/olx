@@ -43,7 +43,7 @@ router.post('/', async (req: Request, res: Response) => {
 				console.log(error)
 				res.status(500).json('Error sending email')
 			} else {
-				res.status(200).json('Email sent')
+				res.status(200).json(code)
 			}
 		})
 })

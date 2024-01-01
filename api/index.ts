@@ -1,8 +1,9 @@
 import express, { Application } from 'express'
-import dotenv from 'dotenv'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import { MongoConnect } from './middleware/mongo-connect'
+
+// Routes import
 
 import authRoute from './routes/auth'
 import mailgunRoute from './routes/mailgun'
@@ -14,7 +15,6 @@ const port = 8800
 
 // Middleware
 
-dotenv.config({ path: '.env.local' })
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
