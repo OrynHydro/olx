@@ -1,9 +1,14 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import s from './Header.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FiMessageCircle } from 'react-icons/fi'
 import { CiHeart, CiUser } from 'react-icons/ci'
+import { useDispatch } from 'react-redux'
+import { IUser } from '../../../../../api/models/User'
+import { setUser } from '@/store/user/userSlice'
+import axios from 'axios'
+import { useAuth } from '@/hooks/useAuth'
 
 const Header: FC = () => {
 	return (

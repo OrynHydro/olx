@@ -25,13 +25,15 @@ router.post('/', async (req: Request, res: Response) => {
 		subject: 'Verification code',
 		html: `
 			<div style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px; text-align: center;">
-			<h1 style="color: #333333;">Verification Code</h1>
-			<p style="font-size: 16px; color: #666666;">Dear ${receiver.split('@')[0]},</p>
-			<p style="font-size: 18px; color: #333333;">Your verification code is:</p>
+			<h1 style="color: #333333;">Код підтвердження</h1>
+			<p style="font-size: 16px; color: #666666;">Шановний ${
+				receiver.split('@')[0]
+			},</p>
+			<p style="font-size: 18px; color: #333333;">Ваш код підтвердження:</p>
 			<h2 style="color: #4285f4; background-color: #ebebeb; padding: 10px; border-radius: 8px; display: inline-block;">
 				${code}
 			</h2>
-			<p style="font-size: 16px; color: #666666;">Best regards,<br>orynhydro</p>
+			<p style="font-size: 16px; color: #666666;">З найкращими побажаннями,<br>orynhydro</p>
 			</div>
 		`,
 	}

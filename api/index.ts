@@ -7,6 +7,7 @@ import { MongoConnect } from './middleware/mongo-connect'
 
 import authRoute from './routes/auth'
 import mailgunRoute from './routes/mailgun'
+import userRoute from './routes/users'
 
 // app config
 
@@ -27,5 +28,6 @@ MongoConnect()
 
 app.use('/auth', authRoute)
 app.use('/mailgun', mailgunRoute)
+app.use('/users', userRoute)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))
