@@ -15,6 +15,8 @@ const CategoryItem: FC<ICategoryItemProps> = ({
 	active,
 	setActive,
 }) => {
+	const PF = process.env.NEXT_PUBLIC_FOLDER
+
 	return (
 		<div
 			className={s.category}
@@ -35,7 +37,7 @@ const CategoryItem: FC<ICategoryItemProps> = ({
 				>
 					<Image
 						className='rounded-full'
-						src={category.img}
+						src={PF + category.img}
 						width={88}
 						height={88}
 						alt=''

@@ -1,15 +1,12 @@
 'use client'
-import { FC, PropsWithChildren, useEffect, useState } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import s from './Layout.module.scss'
 import Header from './header/Header'
 import Footer from './footer/Footer'
 import { usePathname } from 'next/navigation'
-import { Provider, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux'
 import store from '@/store/store'
-import { setUser } from '@/store/user/userSlice'
-import { IUser } from '../../../../api/models/User'
-import axios from 'axios'
-import AuthProvider from '@/providers/Provider'
+import AuthProvider from '@/providers/AuthProvider'
 
 const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const pathname = usePathname()

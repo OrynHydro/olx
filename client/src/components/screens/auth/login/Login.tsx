@@ -7,6 +7,10 @@ import React, { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import s from './Login.module.scss'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { setUser } from '@/store/user/userSlice'
+import { useRouter } from 'next/navigation'
+import { useActions } from '@/hooks/useActions'
 
 const Login: FC = () => {
 	const {
@@ -14,6 +18,7 @@ const Login: FC = () => {
 		formState: { errors, isValid },
 		handleSubmit,
 		watch,
+		reset,
 	} = useForm<TLoginSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(loginSchema),
@@ -21,8 +26,18 @@ const Login: FC = () => {
 	const emailValue = watch('email')
 	const passwordValue = watch('password')
 
+	const dispatch = useDispatch()
+
+	const { setUser } = useActions()
+
+	const router = useRouter()
+
 	const onSubmit: SubmitHandler<TLoginSchema> = async data => {
-		await axios.post('/api/auth/login', data).then(res => console.log(res.data))
+		const user = await axios.post('/api/auth/login', data)
+		// dispatch(setUser(user.data))
+		setUser(user.data)
+		reset()
+		router.push('/')
 	}
 
 	return (

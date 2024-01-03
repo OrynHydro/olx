@@ -1,0 +1,16 @@
+.screen {
+	@apply flex items-center justify-center h-screen bg-light-gray;
+
+	.loader {
+		@apply animate-spin rounded-full border-t-4 border-cyan/90 border-opacity-25 h-20 w-20;
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	}
+}

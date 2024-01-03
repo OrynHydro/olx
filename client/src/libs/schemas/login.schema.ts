@@ -9,7 +9,7 @@ export const loginSchema = z.object({
 		.min(1, {
 			message: 'Не забудьте ввести електронну пошту',
 		}),
-	password: z.string().min(8, {
+	password: z.string().min(6, {
 		message: 'Ви впевнені, що це правильний пароль? Він надто короткий.',
 	}),
 })

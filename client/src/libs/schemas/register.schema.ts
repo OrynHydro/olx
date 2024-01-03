@@ -9,8 +9,8 @@ export const registerSchema = z.object({
 		.min(1, {
 			message: 'Не забудьте ввести електронну пошту',
 		}),
-	password: z.string().min(8, {
-		message: 'Пароль повинен мати мінімум 8 символів',
+	password: z.string().min(6, {
+		message: 'Пароль повинен мати мінімум 6 символів',
 	}),
 	verification: z
 		.string()

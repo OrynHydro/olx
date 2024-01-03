@@ -4,31 +4,29 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FiMessageCircle } from 'react-icons/fi'
 import { CiHeart, CiUser } from 'react-icons/ci'
-import { useDispatch } from 'react-redux'
-import { IUser } from '../../../../../api/models/User'
-import { setUser } from '@/store/user/userSlice'
-import axios from 'axios'
 import { useAuth } from '@/hooks/useAuth'
 
 const Header: FC = () => {
+	const user = useAuth()
+	const PF = process.env.NEXT_PUBLIC_FOLDER
 	return (
 		<header className={s.header}>
 			<div className='wrapper'>
 				<div className={s.container}>
-					<Image width={71} height={41} src={'/images/logo/logo.svg'} alt='' />
+					<Image width={71} height={41} src={PF + '/logo/logo.svg'} alt='' />
 					<nav className={s.nav}>
-						<Link href={'#'} className={s.message}>
+						<Link href={!user ? '/auth?tab=login' : ''} className={s.message}>
 							<FiMessageCircle className={s.icon} fontSize={22} />
 							<span>Повідомлення</span>
 						</Link>
-						<Link href={'#'} className={s.favourite}>
+						<Link href={!user ? '/auth?tab=login' : ''} className={s.favourite}>
 							<CiHeart fontSize={22} strokeWidth={1} />
 						</Link>
-						<Link href={'/auth?tab=login'} className={s.profile}>
+						<Link href={!user ? '/auth?tab=login' : ''} className={s.profile}>
 							<CiUser fontSize={22} className={s.icon} strokeWidth={1} />
 							<span>Ваш профіль</span>
 						</Link>
-						<Link href={'#'} className={s.adding}>
+						<Link href={!user ? '/auth?tab=login' : ''} className={s.adding}>
 							Додати оголошення
 						</Link>
 					</nav>

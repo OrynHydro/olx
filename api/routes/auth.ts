@@ -24,7 +24,7 @@ router.post('/register', async (req: Request, res: Response) => {
 
 		const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '1h' })
 
-		res.cookie('accessToken', token, { httpOnly: true })
+		res.cookie('accessToken', token, { httpOnly: false })
 
 		res.status(200).json(user)
 	} catch (error) {
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
 
 		const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '1h' })
 
-		res.cookie('accessToken', token, { httpOnly: true })
+		res.cookie('accessToken', token, { httpOnly: false })
 
 		res.status(200).json(user)
 	} catch (error) {

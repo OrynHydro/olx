@@ -3,7 +3,7 @@ import { ICategory } from '@/interfaces/category.interface'
 export const categoriesData: ICategory[] = [
 	{
 		title: 'Допомога',
-		img: '/images/category/help.png',
+		img: 'category/help.png',
 		color: '#f2f3f5',
 		link: '/help',
 		subcategories: [
@@ -19,7 +19,7 @@ export const categoriesData: ICategory[] = [
 	},
 	{
 		title: 'Дитячий світ',
-		img: '/images/category/children.png',
+		img: 'category/children.png',
 		color: '#3a77ff',
 		link: '/children_world',
 		subcategories: [
@@ -67,7 +67,7 @@ export const categoriesData: ICategory[] = [
 	},
 	{
 		title: 'Авто',
-		img: '/images/category/auto.png',
+		img: 'category/auto.png',
 		color: '#ff5636',
 		link: '/transport',
 		subcategories: [
@@ -119,7 +119,7 @@ export const categoriesData: ICategory[] = [
 	},
 	{
 		title: 'Запчастини для транспорту',
-		img: '/images/category/parts.png',
+		img: 'category/parts.png',
 		color: '#fff6d9',
 		link: '/parts',
 		subcategories: [
@@ -171,7 +171,7 @@ export const categoriesData: ICategory[] = [
 	},
 	{
 		title: 'Робота',
-		img: '/images/category/work.png',
+		img: 'category/work.png',
 		link: '/work',
 		color: '#ceddff',
 		subcategories: [
@@ -283,7 +283,7 @@ export const categoriesData: ICategory[] = [
 	},
 	{
 		title: 'Тварини',
-		img: '/images/category/pets.png',
+		img: 'category/pets.png',
 		color: '#c8f8f6',
 		link: '/animals',
 		subcategories: [
@@ -340,7 +340,7 @@ export const categoriesData: ICategory[] = [
 	{
 		title: 'Дім і сад',
 		link: '/household',
-		img: '/images/category/household.png',
+		img: 'category/household.png',
 		color: '#ffd6c9',
 		subcategories: [
 			{
@@ -396,7 +396,7 @@ export const categoriesData: ICategory[] = [
 	{
 		title: 'Електроніка',
 		link: '/electronics',
-		img: '/images/category/electronic.png',
+		img: 'category/electronic.png',
 		color: '#ffce32',
 		subcategories: [
 			{
@@ -465,7 +465,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Бізнес та послуги',
 		link: '/services',
 		color: '#ceddff',
-		img: '/images/category/services.png',
+		img: 'category/services.png',
 		subcategories: [
 			{
 				title: 'Продаж бізнесу',
@@ -553,7 +553,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Оренда та прокат',
 		link: '/rent',
 		color: '#c8f8f6',
-		img: '/images/category/rent.png',
+		img: 'category/rent.png',
 		subcategories: [
 			{
 				title: 'Оренда транспорту та спецтехніки',
@@ -604,7 +604,7 @@ export const categoriesData: ICategory[] = [
 	{
 		title: 'Мода і стиль',
 		link: '/fashion',
-		img: '/images/category/fashion.png',
+		img: 'category/fashion.png',
 		color: '#ffd6c9',
 		subcategories: [
 			{
@@ -672,7 +672,7 @@ export const categoriesData: ICategory[] = [
 	{
 		title: 'Хобі, відпочинок і спорт',
 		link: '/hobby',
-		img: '/images/category/hobby.png',
+		img: 'category/hobby.png',
 		color: '#fff6d9',
 		subcategories: [
 			{
@@ -728,13 +728,13 @@ export const categoriesData: ICategory[] = [
 	{
 		title: 'Віддам безкоштовно',
 		link: '/free',
-		img: '/images/category/free.png',
+		img: 'category/free.png',
 		color: '#3a77ff',
 	},
 	{
 		title: 'Обмін',
 		link: '/exchange',
-		img: '/images/category/exchange.png',
+		img: 'category/exchange.png',
 		color: '#23e5db',
 	},
 ]

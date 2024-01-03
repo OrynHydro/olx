@@ -10,6 +10,8 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { IoChevronBack } from 'react-icons/io5'
+import { useDispatch } from 'react-redux'
+import { setUser } from '@/store/user/userSlice'
 
 const Register: FC<{ verification: string | null }> = ({ verification }) => {
 	const {
@@ -18,7 +20,7 @@ const Register: FC<{ verification: string | null }> = ({ verification }) => {
 		handleSubmit,
 		watch,
 		setError,
-		clearErrors,
+		reset,
 	} = useForm<TRegisterSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(registerSchema),
@@ -28,6 +30,8 @@ const Register: FC<{ verification: string | null }> = ({ verification }) => {
 	const verificationValue = watch('verification')
 
 	const [verificationCode, setVerificationCode] = useState<string | null>(null)
+
+	const dispatch = useDispatch()
 
 	const onSubmit: SubmitHandler<TRegisterSchema> = async data => {
 		if (!verificationCode) {
@@ -39,8 +43,10 @@ const Register: FC<{ verification: string | null }> = ({ verification }) => {
 			}
 		} else if (verificationCode === verificationValue) {
 			try {
-				const res = await axios.post('/api/auth/register', data)
-				console.log(res.data)
+				const user = await axios.post('/api/auth/register', data)
+				dispatch(setUser(user.data))
+				reset()
+				router.push('/')
 			} catch (error) {
 				console.error(error)
 			}
