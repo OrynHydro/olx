@@ -4,7 +4,7 @@ import plugin from 'tailwindcss/plugin'
 
 const constants = {
 	cyan: 'rgba(0, 47, 52, <alpha-value>)',
-	gray: 'rgba(121, 151, 153, <alpha-value>)',
+	gray: 'rgba(127, 151, 153, <alpha-value>)',
 	'light-gray': '#f2f4f5',
 	blue: '#3a77ff',
 	red: '#ff5636',
@@ -28,6 +28,7 @@ const config: Config = {
 			},
 			height: {
 				'not-found': 'calc(100vh + 400px)',
+				dropdown: '600px',
 			},
 			width: {
 				'92': '23rem',
@@ -74,6 +75,12 @@ const config: Config = {
 			addUtilities({
 				'.transition-200': {
 					transition: '0.2s ease-in-out',
+				},
+				'.transition-300': {
+					transition: '0.3s ease-in-out',
+				},
+				'.transition-300-height': {
+					transition: 'max-height 0.3s ease-in-out',
 				},
 				'.transition-1000': {
 					transition: '1s linear',

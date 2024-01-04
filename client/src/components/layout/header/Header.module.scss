@@ -10,7 +10,7 @@
 			.message,
 			.favourite,
 			.profile {
-				@apply flex items-center gap-5 cursor-pointer;
+				@apply flex items-center gap-5 cursor-pointer relative;
 
 				.icon {
 					@apply text-white transition-200;
@@ -45,6 +45,36 @@
 
 				&:hover::before {
 					@apply w-full;
+				}
+			}
+
+			.profile {
+				.dropdown {
+					@apply absolute top-6 -right-8 w-56 bg-white rounded-md shadow-md overflow-hidden z-10 h-0 transition-300 cursor-default;
+
+					&.active {
+						@apply h-dropdown;
+					}
+
+					.container {
+						@apply flex flex-col items-start;
+
+						.title {
+							@apply my-2 mx-4 text-base font-bold text-gray;
+						}
+
+						.item {
+							@apply w-full flex items-center gap-3 px-4 py-2 text-base font-thin text-cyan/70 cursor-pointer transition-200;
+
+							&:hover {
+								@apply bg-cyan text-white;
+							}
+
+							&.button {
+								@apply border-top-2-light-gray;
+							}
+						}
+					}
 				}
 			}
 		}

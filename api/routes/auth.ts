@@ -8,7 +8,8 @@ const router = Router()
 
 dotenv.config({ path: '.env.local' })
 
-const secretKey = process.env.JWT_SECRET!
+const secretKeyAccess = process.env.JWT_SECRET_ACCESS!
+const secretKeyRefresh = process.env.JWT_SECRET_REFRESH!
 
 router.post('/register', async (req: Request, res: Response) => {
 	try {
@@ -22,9 +23,16 @@ router.post('/register', async (req: Request, res: Response) => {
 
 		const user = await newUser.save()
 
-		const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '1h' })
+		const accessToken = jwt.sign({ userId: user._id }, secretKeyAccess, {
+			expiresIn: '1h',
+		})
 
-		res.cookie('accessToken', token, { httpOnly: false })
+		const refreshToken = jwt.sign({ userId: user._id }, secretKeyRefresh, {
+			expiresIn: '7d',
+		})
+
+		res.cookie('accessToken', accessToken, { httpOnly: false })
+		res.cookie('refreshToken', refreshToken, { httpOnly: true })
 
 		res.status(200).json(user)
 	} catch (error) {
@@ -48,9 +56,16 @@ router.post('/login', async (req, res) => {
 			return res.status(401).json('Invalid credentials')
 		}
 
-		const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '1h' })
+		const accessToken = jwt.sign({ userId: user._id }, secretKeyAccess, {
+			expiresIn: '1h',
+		})
 
-		res.cookie('accessToken', token, { httpOnly: false })
+		const refreshToken = jwt.sign({ userId: user._id }, secretKeyRefresh, {
+			expiresIn: '7d',
+		})
+
+		res.cookie('accessToken', accessToken, { httpOnly: false })
+		res.cookie('refreshToken', refreshToken, { httpOnly: true })
 
 		res.status(200).json(user)
 	} catch (error) {

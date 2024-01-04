@@ -7,23 +7,49 @@ const router = Router()
 
 dotenv.config({ path: '.env.local' })
 
+const secretKeyAccess = process.env.JWT_SECRET_ACCESS!
+const secretKeyRefresh = process.env.JWT_SECRET_REFRESH!
+
 router.get('/', async (req, res) => {
-	const token = req.cookies['accessToken']
+	const accessToken = req.cookies['accessToken']
+	const refreshToken = req.cookies['refreshToken']
 
 	try {
-		const decoded = jwt.verify(token, process.env.JWT_SECRET!)
+		const decodedAccessToken = jwt.verify(accessToken, secretKeyAccess)
 
-		const user = decoded as JwtPayload
+		const user = decodedAccessToken as JwtPayload
 
 		if (!user) {
-			return res.status(401).json({ message: 'Unauthorized: Invalid token' })
+			return res.status(401).json('Unauthorized: Invalid access token')
 		}
 
 		const dbUser = await User.findById(user.userId)
+		return res.status(200).json(dbUser)
+	} catch (accessTokenError) {
+		try {
+			const decodedRefreshToken = jwt.verify(refreshToken, secretKeyRefresh)
 
-		res.status(200).json(dbUser)
-	} catch (error) {
-		return res.status(401).json({ message: 'Unauthorized: Invalid token' })
+			const user = decodedRefreshToken as JwtPayload
+
+			if (!user) {
+				return res.status(401).json('Unauthorized: Invalid refresh token')
+			}
+
+			const newAccessToken = jwt.sign(
+				{ userId: user.userId },
+				secretKeyAccess,
+				{ expiresIn: '1h' }
+			)
+
+			res.cookie('accessToken', newAccessToken, { httpOnly: false })
+
+			const dbUser = await User.findById(user.userId)
+			return res.status(200).json(dbUser)
+		} catch (refreshTokenError) {
+			return res
+				.status(401)
+				.json('Unauthorized: Invalid access and refresh tokens')
+		}
 	}
 })
 
