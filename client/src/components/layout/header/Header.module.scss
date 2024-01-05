@@ -59,6 +59,18 @@
 					.container {
 						@apply flex flex-col items-start;
 
+						.user {
+							@apply flex items-center gap-2 my-2 mx-4;
+
+							> img {
+								@apply rounded-full;
+							}
+
+							.username {
+								@apply font-semibold;
+							}
+						}
+
 						.title {
 							@apply my-2 mx-4 text-base font-bold text-gray;
 						}

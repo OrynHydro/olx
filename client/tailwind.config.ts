@@ -28,7 +28,7 @@ const config: Config = {
 			},
 			height: {
 				'not-found': 'calc(100vh + 400px)',
-				dropdown: '600px',
+				dropdown: '510px',
 			},
 			width: {
 				'92': '23rem',
@@ -78,9 +78,6 @@ const config: Config = {
 				},
 				'.transition-300': {
 					transition: '0.3s ease-in-out',
-				},
-				'.transition-300-height': {
-					transition: 'max-height 0.3s ease-in-out',
 				},
 				'.transition-1000': {
 					transition: '1s linear',

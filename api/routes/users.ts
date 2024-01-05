@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
 				{ expiresIn: '1h' }
 			)
 
-			res.cookie('accessToken', newAccessToken, { httpOnly: false })
+			res.cookie('accessToken', newAccessToken, { httpOnly: true })
 
 			const dbUser = await User.findById(user.userId)
 			return res.status(200).json(dbUser)

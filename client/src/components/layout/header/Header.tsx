@@ -7,22 +7,47 @@ import { FiMessageCircle } from 'react-icons/fi'
 import { CiHeart, CiUser } from 'react-icons/ci'
 import { useAuth } from '@/hooks/useAuth'
 import { HeaderProfileData } from '@/helpers/header-profile.data'
+import axios from 'axios'
 
 const Header: FC = () => {
 	const user = useAuth()
 	const PF = process.env.NEXT_PUBLIC_FOLDER
 	const [showDropdown, setShowDropdown] = useState<boolean>(false)
+
+	const logout = async (type: string) => {
+		if (type !== 'button') return
+		try {
+			await axios.post('/api/auth/logout').then(res => {
+				if (res.data === 'Success') {
+					window.location.reload()
+					window.location.href = '/'
+				}
+			})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	return (
 		<header className={s.header}>
 			<div className='wrapper'>
 				<div className={s.container}>
-					<Image width={71} height={41} src={PF + '/logo/logo.svg'} alt='' />
+					<Link href='/'>
+						<Image width={71} height={41} src={PF + '/logo/logo.svg'} alt='' />
+					</Link>
+
 					<nav className={s.nav}>
-						<Link href={!user ? '/auth?tab=login' : ''} className={s.message}>
+						<Link
+							href={!user ? '/auth?tab=login' : '/myaccount/answers'}
+							className={s.message}
+						>
 							<FiMessageCircle className={s.icon} fontSize={22} />
 							<span>Повідомлення</span>
 						</Link>
-						<Link href={!user ? '/auth?tab=login' : ''} className={s.favourite}>
+						<Link
+							href={!user ? '/auth?tab=login' : '/favorites/search'}
+							className={s.favourite}
+						>
 							<CiHeart fontSize={22} strokeWidth={1} />
 						</Link>
 						{!user ? (
@@ -44,7 +69,15 @@ const Header: FC = () => {
 									}
 								>
 									<div className={s.container}>
-										<li className={s.user}></li>
+										<li className={s.user}>
+											<Image
+												src={PF + 'noAvatar.svg'}
+												alt=''
+												width={40}
+												height={40}
+											/>
+											<span className={s.username}>{user?.username}</span>
+										</li>
 										{HeaderProfileData.map((item, index) => (
 											<li
 												key={index}
@@ -55,6 +88,7 @@ const Header: FC = () => {
 														? `${s.button} ${s.item}`
 														: s.item
 												}
+												onClick={() => logout(item.type)}
 											>
 												{item.type === 'title' ? (
 													item.text
@@ -79,7 +113,10 @@ const Header: FC = () => {
 							</div>
 						)}
 
-						<Link href={!user ? '/auth?tab=login' : ''} className={s.adding}>
+						<Link
+							href={!user ? '/auth?tab=login' : '/adding'}
+							className={s.adding}
+						>
 							Додати оголошення
 						</Link>
 					</nav>

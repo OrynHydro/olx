@@ -11,6 +11,7 @@ dotenv.config({ path: '.env.local' })
 const secretKeyAccess = process.env.JWT_SECRET_ACCESS!
 const secretKeyRefresh = process.env.JWT_SECRET_REFRESH!
 
+// register
 router.post('/register', async (req: Request, res: Response) => {
 	try {
 		const salt = await bcrypt.genSalt(10)
@@ -31,8 +32,13 @@ router.post('/register', async (req: Request, res: Response) => {
 			expiresIn: '7d',
 		})
 
-		res.cookie('accessToken', accessToken, { httpOnly: false })
-		res.cookie('refreshToken', refreshToken, { httpOnly: true })
+		res.cookie('accessToken', accessToken, {
+			httpOnly: true,
+		})
+
+		res.cookie('refreshToken', refreshToken, {
+			httpOnly: true,
+		})
 
 		res.status(200).json(user)
 	} catch (error) {
@@ -40,6 +46,7 @@ router.post('/register', async (req: Request, res: Response) => {
 	}
 })
 
+// login
 router.post('/login', async (req, res) => {
 	try {
 		const { email, password } = req.body
@@ -64,10 +71,21 @@ router.post('/login', async (req, res) => {
 			expiresIn: '7d',
 		})
 
-		res.cookie('accessToken', accessToken, { httpOnly: false })
+		res.cookie('accessToken', accessToken, { httpOnly: true })
 		res.cookie('refreshToken', refreshToken, { httpOnly: true })
 
 		res.status(200).json(user)
+	} catch (error) {
+		res.status(500).json(error)
+	}
+})
+
+// logout
+router.post('/logout', (req, res) => {
+	try {
+		res.clearCookie('accessToken')
+		res.clearCookie('refreshToken')
+		res.status(200).json('Success')
 	} catch (error) {
 		res.status(500).json(error)
 	}

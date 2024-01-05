@@ -1,11 +1,16 @@
+import { IUser } from '../../../api/models/User'
 import { useTypedSelector } from './useTypedSelector'
 
-export const useAuth = () => {
-	const user = useTypedSelector(state => state.user)
+interface AuthResponse {
+	user?: IUser
+}
 
-	if (user && 'user' in user) {
-		return user.user
-	} else if (user) {
-		return user
+export const useAuth = () => {
+	const authResponse = useTypedSelector(state => state.user) as AuthResponse
+
+	if (authResponse.user) {
+		return authResponse.user
 	}
+
+	return null
 }
