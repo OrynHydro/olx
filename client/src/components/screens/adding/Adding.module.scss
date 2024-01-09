@@ -1,0 +1,19 @@
+.container {
+	@apply flex flex-col gap-4 my-8;
+
+	.title {
+		@apply text-3xl font-bold;
+	}
+
+	.main {
+		@apply flex flex-col gap-2;
+
+		.block {
+			@apply p-8 bg-white flex flex-col gap-2;
+
+			.title {
+				@apply text-xl font-medium;
+			}
+		}
+	}
+}

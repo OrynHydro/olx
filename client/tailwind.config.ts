@@ -6,6 +6,7 @@ const constants = {
 	cyan: 'rgba(0, 47, 52, <alpha-value>)',
 	gray: 'rgba(127, 151, 153, <alpha-value>)',
 	'light-gray': '#f2f4f5',
+	'disabled-gray': '#fafbfb',
 	blue: '#3a77ff',
 	red: '#ff5636',
 }
@@ -32,6 +33,7 @@ const config: Config = {
 			},
 			width: {
 				'92': '23rem',
+				adding: '50rem',
 			},
 		},
 	},

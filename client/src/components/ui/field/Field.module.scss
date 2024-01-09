@@ -1,19 +1,42 @@
 .field {
 	@apply flex flex-col mb-3;
 
-	> label {
-		@apply mb-1 text-cyan;
+	.top {
+		@apply w-92 flex items-center justify-between mb-1;
 
-		.title {
-			@apply text-sm;
+		&.adding {
+			@apply w-adding;
+		}
+
+		> label {
+			@apply text-cyan;
+
+			.title {
+				@apply text-sm;
+			}
+		}
+		.counter {
+			@apply font-normal;
 		}
 	}
 
 	.inputBlock {
 		@apply flex items-center relative w-92 h-12 text-base text-cyan rounded-sm bg-light-gray;
 
+		&.adding {
+			@apply w-adding;
+		}
+
+		&.textarea {
+			@apply h-64;
+		}
+
+		&.disabled {
+			@apply bg-disabled-gray text-gray;
+		}
+
 		.input {
-			@apply h-full w-full py-2 px-3 pr-11 border-bottom-2-transparent;
+			@apply h-full w-full py-2 px-3 pr-11 border-bottom-2-transparent resize-none;
 
 			&:focus {
 				@apply border-bottom-2-cyan;
@@ -26,6 +49,10 @@
 
 		.icons {
 			@apply absolute right-0 mr-3 flex items-center;
+
+			&.textarea {
+				@apply top-3;
+			}
 
 			.icon {
 				@apply relative right-0 mr-3;

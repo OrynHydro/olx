@@ -2,7 +2,10 @@ import { z } from 'zod'
 
 export const addingSchema = z.object({
 	title: z
-		.string()
+		.string({
+			required_error:
+				'Заголовок відіграє важливу роль, не забудьте додати його',
+		})
 		.min(16, {
 			message: 'У заголовку має бути не менше 16 символів',
 		})
@@ -32,9 +35,14 @@ export const addingSchema = z.object({
 	location: z.string().min(1, {
 		message: 'Будь ласка, вкажіть місце знаходження',
 	}),
-	sellerName: z.string().min(1, {
-		message: "Будь ласка, вкажіть ім'я контактної особи",
-	}),
+	sellerName: z
+		.string()
+		.min(1, {
+			message: "Будь ласка, вкажіть ім'я контактної особи",
+		})
+		.max(100, {
+			message: "Ім'я контактної особи не повинно містити більше 100 символів",
+		}),
 	sellerEmail: z
 		.string()
 		.email({
