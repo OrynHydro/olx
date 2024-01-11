@@ -1,3 +1,4 @@
+import { LocationData } from '@/helpers/location.data'
 import { z } from 'zod'
 
 export const addingSchema = z.object({
@@ -32,9 +33,23 @@ export const addingSchema = z.object({
 	sellerType: z.enum(['private', 'business']),
 	condition: z.enum(['utilized', 'new']),
 	autoRenewal: z.boolean(),
-	location: z.string().min(1, {
-		message: 'Будь ласка, вкажіть місце знаходження',
-	}),
+	location: z
+		.object({
+			label: z.string(),
+			value: z.number(),
+		})
+		.refine(
+			value => {
+				if (typeof value === 'object') {
+					const location = value.label
+					return LocationData.map(item => item.title).includes(location)
+				}
+			},
+			{
+				message: `Будь ласка, вкажіть місце знаходження`,
+			}
+		)
+		.transform(value => value.label),
 	sellerName: z
 		.string()
 		.min(1, {

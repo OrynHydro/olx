@@ -20,7 +20,6 @@ const port = 8800
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
-
 app.use('/images', express.static(path.join(__dirname, 'public/images')))
 
 // DB connection

@@ -1,0 +1,11 @@
+.option {
+	@apply flex flex-col p-3 cursor-pointer;
+
+	.title {
+		@apply text-base font-normal text-black;
+	}
+
+	.subTitle {
+		@apply text-sm font-light text-gray;
+	}
+}

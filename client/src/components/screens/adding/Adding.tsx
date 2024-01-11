@@ -30,6 +30,7 @@ const Adding: FC = () => {
 	const descValue = watch('desc')
 	const sellerEmailValue = user?.email ?? ''
 	const sellerPhoneValue = watch('sellerPhone')
+	const locationValue = watch('location')
 
 	const [sellerNameValue, setSellerNameValue] = useState<string>('')
 
@@ -72,6 +73,17 @@ const Adding: FC = () => {
 							error={errors.desc?.message}
 							value={descValue}
 							placeholder='Подумайте, що ви хотіли би дізнатися з оголошення. І додайте це в опис'
+							required
+							adding
+							control={control}
+						/>
+					</div>
+					<div className={s.block}>
+						<Field
+							{...formRegister('location')}
+							label='Місцезнаходження'
+							error={errors.location?.message}
+							value={locationValue}
 							required
 							adding
 							control={control}

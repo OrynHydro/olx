@@ -7,6 +7,10 @@ import { IoMdCheckmark } from 'react-icons/io'
 import { FiEye } from 'react-icons/fi'
 import { FiEyeOff } from 'react-icons/fi'
 import { Control, Controller } from 'react-hook-form'
+import Select from 'react-select'
+import Option from './option/Option'
+import { LocationData } from '@/helpers/location.data'
+import CustomSelect from './select/Select'
 
 interface IField
 	extends Omit<InputHTMLAttributes<HTMLInputElement>, 'className'> {
@@ -37,6 +41,28 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 ) {
 	const [hind, setHind] = useState<boolean>(false)
 	const [hover, setHover] = useState<boolean>(false)
+
+	const locationOptions = LocationData.map((location, index) => ({
+		value: index,
+		label: location.title,
+		subTitle: location.subTitle,
+	}))
+
+	const customStyles = {
+		clearIndicator: (provided: any, state: any) => ({
+			...provided,
+			display: 'none',
+		}),
+		dropdownIndicator: (provided: any, state: any) => ({
+			...provided,
+			display: 'none',
+		}),
+		indicatorSeparator: (provided: any, state: any) => ({
+			...provided,
+			display: 'none',
+		}),
+	}
+
 	return (
 		<div className={s.field}>
 			<div className={adding ? `${s.top} ${s.adding}` : s.top}>
@@ -58,23 +84,37 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 						: adding
 						? label === 'Опис'
 							? `${s.inputBlock} ${s.adding} ${s.textarea}`
+							: label === 'Місцезнаходження'
+							? s.inputBlock
 							: `${s.inputBlock} ${s.adding}`
 						: s.inputBlock
 				}
 			>
-				{label === 'Опис' ? (
-					<Controller
-						name='desc'
-						control={control}
-						render={({ field }) => (
-							<textarea
-								className={s.input}
-								{...field}
-								placeholder={placeholder}
-								maxLength={9000}
+				{control ? (
+					label === 'Опис' ? (
+						<Controller
+							name='desc'
+							control={control}
+							render={({ field }) => (
+								<textarea
+									className={s.input}
+									{...field}
+									placeholder={placeholder}
+									maxLength={9000}
+								/>
+							)}
+						/>
+					) : (
+						label === 'Місцезнаходження' && (
+							<Controller
+								name='location'
+								control={control}
+								render={({ field }) => (
+									<CustomSelect name={field.name} control={control} />
+								)}
 							/>
-						)}
-					/>
+						)
+					)
 				) : (
 					<input
 						className={error ? `${s.input} ${s.error}` : s.input}
