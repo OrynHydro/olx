@@ -42,7 +42,9 @@ export const addingSchema = z.object({
 			value => {
 				if (typeof value === 'object') {
 					const location = value.label
-					return LocationData.map(item => item.title).includes(location)
+					return LocationData.map(
+						item => `${item.city}, ${item.region}`
+					).includes(location)
 				}
 			},
 			{
@@ -66,12 +68,12 @@ export const addingSchema = z.object({
 		.optional(),
 	sellerPhone: z.string().refine(
 		value => {
-			const phoneNumberRegex = /^380\d{9}$/
+			const phoneNumberRegex = /^\+380\d{9}$/
 			return phoneNumberRegex.test(value)
 		},
 		{
 			message:
-				'Будь ласка, введіть коректний номер телефону у форматі: 380ХХХХХХХХХ.',
+				'Будь ласка, введіть коректний номер телефону у форматі: +380ХХХХХХХХХ.',
 		}
 	),
 })

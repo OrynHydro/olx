@@ -3,12 +3,10 @@ import Select from 'react-select'
 import { useController, FieldValues, FieldPath, Control } from 'react-hook-form'
 import { LocationData } from '@/helpers/location.data'
 import Option from '../option/Option'
-import s from './Select.module.scss'
 
 interface CustomSelectProps<TFieldValues extends FieldValues = FieldValues> {
 	name: FieldPath<TFieldValues>
 	control: Control<any>
-	placeholder?: string
 }
 
 const CustomSelect = <TFieldValues extends FieldValues = FieldValues>({
@@ -22,20 +20,19 @@ const CustomSelect = <TFieldValues extends FieldValues = FieldValues>({
 
 	const locationOptions = LocationData.map((location, index) => ({
 		value: index,
-		label: location.title,
-		subTitle: location.subTitle,
+		label: `${location.city}, ${location.region}`,
 	}))
 
 	const customStyles = {
-		clearIndicator: (provided: any, state: any) => ({
+		clearIndicator: (provided: any) => ({
 			...provided,
 			display: 'none',
 		}),
-		dropdownIndicator: (provided: any, state: any) => ({
+		dropdownIndicator: (provided: any) => ({
 			...provided,
 			display: 'none',
 		}),
-		indicatorSeparator: (provided: any, state: any) => ({
+		indicatorSeparator: (provided: any) => ({
 			...provided,
 			display: 'none',
 		}),
@@ -47,6 +44,12 @@ const CustomSelect = <TFieldValues extends FieldValues = FieldValues>({
 			options={locationOptions}
 			placeholder='Назва міста й індекс'
 			components={{ Option: Option }}
+			filterOption={(option, inputValue) =>
+				option.label
+					.split(', ')[0]
+					.toLowerCase()
+					.includes(inputValue.toLowerCase())
+			}
 			styles={{
 				...customStyles,
 				control: (baseStyles, state) => ({

@@ -1,5 +1,13 @@
 .option {
-	@apply flex flex-col p-3 cursor-pointer;
+	@apply flex flex-col p-3 cursor-pointer transition-200 relative;
+
+	&:hover {
+		@apply bg-light-gray;
+	}
+
+	&::after {
+		@apply absolute bottom-0 w-80 h-0.25 bg-light-gray content-empty;
+	}
 
 	.title {
 		@apply text-base font-normal text-black;

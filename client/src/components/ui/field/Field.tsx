@@ -42,27 +42,6 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 	const [hind, setHind] = useState<boolean>(false)
 	const [hover, setHover] = useState<boolean>(false)
 
-	const locationOptions = LocationData.map((location, index) => ({
-		value: index,
-		label: location.title,
-		subTitle: location.subTitle,
-	}))
-
-	const customStyles = {
-		clearIndicator: (provided: any, state: any) => ({
-			...provided,
-			display: 'none',
-		}),
-		dropdownIndicator: (provided: any, state: any) => ({
-			...provided,
-			display: 'none',
-		}),
-		indicatorSeparator: (provided: any, state: any) => ({
-			...provided,
-			display: 'none',
-		}),
-	}
-
 	return (
 		<div className={s.field}>
 			<div className={adding ? `${s.top} ${s.adding}` : s.top}>

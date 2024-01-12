@@ -30,6 +30,7 @@ const config: Config = {
 			height: {
 				'not-found': 'calc(100vh + 400px)',
 				dropdown: '510px',
+				0.25: '0.0250rem', // 1px,
 			},
 			width: {
 				'92': '23rem',

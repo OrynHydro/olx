@@ -1,4 +1,4 @@
 export interface ILocation {
-	title: string
-	subTitle: string
+	city: string
+	region: string
 }
