@@ -1,6 +1,6 @@
 export interface ICategory {
 	title: string
-	link: string
+	link?: string
 	img?: string
 	color?: string
 	subcategories?: ICategory[]

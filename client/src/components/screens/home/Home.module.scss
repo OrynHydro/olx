@@ -1,12 +1,12 @@
 .categoriesBlock {
-	@apply flex flex-col items-center gap-12 bg-white p-14 pt-2 text-cyan;
+	@apply flex flex-col items-center gap-12 bg-white p-12 pt-4 text-cyan;
 
 	.title {
 		@apply font-bold text-4xl;
 	}
 
 	.categories {
-		@apply flex items-center flex-wrap px-8 gap-16;
+		@apply flex items-center flex-wrap gap-x-12 gap-y-16;
 	}
 
 	.subcategoryBlock {

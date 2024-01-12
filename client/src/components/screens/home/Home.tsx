@@ -22,7 +22,9 @@ const Home: FC = () => {
 					{categoriesData.map((category, index) => (
 						<div
 							onClick={() =>
-								!category.subcategories && router.push(category.link)
+								!category.subcategories &&
+								category.link &&
+								router.push(category.link)
 							}
 							key={index}
 						>
@@ -37,7 +39,7 @@ const Home: FC = () => {
 
 				{active && (
 					<div className={s.subcategoryBlock}>
-						<Link href={active.link} className={s.title}>
+						<Link href={active.link || '/'} className={s.title}>
 							<FaChevronRight />
 							<span className='title'>Переглянути всі оголошення</span>{' '}
 							<span className={s.categoryTitle}> в {active.title}</span>
