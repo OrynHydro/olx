@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Field from '@/components/ui/field/Field'
 import { useAuth } from '@/hooks/useAuth'
-import { useRouter } from 'next/navigation'
 
 const Adding: FC = () => {
 	const user = useAuth()
@@ -23,8 +22,6 @@ const Adding: FC = () => {
 		mode: 'onChange',
 		resolver: zodResolver(addingSchema),
 	})
-
-	const router = useRouter()
 
 	const titleValue = watch('title')
 	const descValue = watch('desc')
