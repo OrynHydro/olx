@@ -1,6 +1,10 @@
 .category {
 	@apply flex flex-col items-center gap-4 rounded-full h-36 cursor-pointer mx-auto;
 
+	&.modal {
+		@apply flex-row p-4 h-20 w-80 rounded-md;
+	}
+
 	.imgBlock {
 		@apply rounded-full;
 	}

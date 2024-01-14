@@ -9,6 +9,7 @@ const constants = {
 	'disabled-gray': '#fafbfb',
 	blue: '#3a77ff',
 	red: '#ff5636',
+	'title-hover': '#00338A',
 }
 
 const config: Config = {
@@ -35,6 +36,7 @@ const config: Config = {
 			width: {
 				'92': '23rem',
 				adding: '50rem',
+				'category-modal': '1064px',
 			},
 		},
 	},

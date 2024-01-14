@@ -5,6 +5,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Допомога',
 		img: 'category/help.png',
 		color: '#f2f3f5',
+		bgColor: '#FFFBEF',
 		link: '/help',
 		subcategories: [
 			{
@@ -79,6 +80,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Дитячий світ',
 		img: 'category/children.png',
 		color: '#3a77ff',
+		bgColor: '#EBF1FF',
 		link: '/children_world',
 		subcategories: [
 			{
@@ -328,6 +330,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Нерухомість',
 		img: 'category/real-estate.png',
 		color: '#23e5db',
+		bgColor: '#E9FCFB',
 		link: '/real-estate',
 		subcategories: [
 			{
@@ -439,6 +442,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Авто',
 		img: 'category/auto.png',
 		color: '#ff5636',
+		bgColor: '#FFEEEA',
 		link: '/transport',
 		subcategories: [
 			{
@@ -673,6 +677,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Запчастини для транспорту',
 		img: 'category/parts.png',
 		color: '#fff6d9',
+		bgColor: '#FFFBEF',
 		link: '/parts',
 		subcategories: [
 			{
@@ -1301,6 +1306,7 @@ export const categoriesData: ICategory[] = [
 		img: 'category/work.png',
 		link: '/work',
 		color: '#ceddff',
+		bgColor: '#EBF1FF',
 		subcategories: [
 			{
 				title: 'Медицина / фармацевтика',
@@ -1600,6 +1606,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Тварини',
 		img: 'category/pets.png',
 		color: '#c8f8f6',
+		bgColor: '#E9FCFB',
 		link: '/animals',
 		subcategories: [
 			{
@@ -1657,6 +1664,7 @@ export const categoriesData: ICategory[] = [
 		link: '/household',
 		img: 'category/household.png',
 		color: '#ffd6c9',
+		bgColor: '#FFEEEA',
 		subcategories: [
 			{
 				title: 'Кімнатні рослини',
@@ -1748,6 +1756,7 @@ export const categoriesData: ICategory[] = [
 		link: '/electronics',
 		img: 'category/electronic.png',
 		color: '#ffce32',
+		bgColor: '#FFFBEF',
 		subcategories: [
 			{
 				title: "Комп'ютери та комплектуючі",
@@ -1941,6 +1950,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Бізнес та послуги',
 		link: '/services',
 		color: '#ceddff',
+		bgColor: '#EBF1FF',
 		img: 'category/services.png',
 		subcategories: [
 			{
@@ -2175,6 +2185,7 @@ export const categoriesData: ICategory[] = [
 		title: 'Оренда та прокат',
 		link: '/rent',
 		color: '#c8f8f6',
+		bgColor: '#E9FCFB',
 		img: 'category/rent.png',
 		subcategories: [
 			{
@@ -2249,6 +2260,7 @@ export const categoriesData: ICategory[] = [
 		link: '/fashion',
 		img: 'category/fashion.png',
 		color: '#ffd6c9',
+		bgColor: '#FFEEEA',
 		subcategories: [
 			{
 				title: "Краса / здоров'я",
@@ -3393,6 +3405,7 @@ export const categoriesData: ICategory[] = [
 		link: '/hobby',
 		img: 'category/hobby.png',
 		color: '#fff6d9',
+		bgColor: '#FFFBEF',
 		subcategories: [
 			{
 				title: 'Музичні інструменти',

@@ -96,7 +96,13 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 					)
 				) : (
 					<input
-						className={error ? `${s.input} ${s.error}` : s.input}
+						className={
+							error
+								? `${s.input} ${s.error}`
+								: label === 'Категорія'
+								? `${s.input} ${s.category}`
+								: s.input
+						}
 						{...rest}
 						ref={ref}
 						type={

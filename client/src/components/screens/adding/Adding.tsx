@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Field from '@/components/ui/field/Field'
 import { useAuth } from '@/hooks/useAuth'
+import CategoryModal from './category-modal/CategoryModal'
 
 const Adding: FC = () => {
 	const user = useAuth()
@@ -24,6 +25,7 @@ const Adding: FC = () => {
 	})
 
 	const titleValue = watch('title')
+	const categoryValue = watch('category')
 	const descValue = watch('desc')
 	const sellerEmailValue = user?.email ?? ''
 	const sellerPhoneValue = watch('sellerPhone')
@@ -46,6 +48,25 @@ const Adding: FC = () => {
 
 	if (!user) return
 
+	const [activeModal, setActiveModal] = useState<boolean>(false)
+
+	useEffect(() => {
+		if (activeModal) {
+			document.body.style.overflowY = 'hidden'
+		} else {
+			document.body.style.overflowY = 'unset'
+		}
+	}, [activeModal])
+
+	const handleClick = () => {
+		setActiveModal(true)
+
+		const activeElement = document.activeElement as HTMLInputElement | null
+		if (activeElement) {
+			activeElement.blur()
+		}
+	}
+
 	return (
 		<div className='wrapper'>
 			<div className={s.container}>
@@ -61,6 +82,15 @@ const Adding: FC = () => {
 							placeholder='Наприклад, iPhone 11 з гарантією'
 							required
 							adding
+						/>
+						<Field
+							{...formRegister('category')}
+							label='Категорія'
+							error={errors.category?.message}
+							value={categoryValue}
+							placeholder='Виберіть категорію'
+							required
+							onClick={handleClick}
 						/>
 					</div>
 					<div className={s.block}>
@@ -111,6 +141,9 @@ const Adding: FC = () => {
 					</div>
 				</form>
 			</div>
+			{activeModal && (
+				<CategoryModal active={activeModal} setActive={setActiveModal} />
+			)}
 		</div>
 	)
 }

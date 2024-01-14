@@ -45,6 +45,10 @@
 			&.error:focus {
 				@apply border-bottom-2-red;
 			}
+
+			&.category:focus {
+				@apply border-bottom-2-transparent cursor-none;
+			}
 		}
 
 		.icons {
