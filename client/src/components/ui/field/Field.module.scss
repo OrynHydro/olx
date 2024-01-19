@@ -1,6 +1,16 @@
 .field {
 	@apply flex flex-col mb-3;
 
+	&.search {
+		.top {
+			@apply w-80;
+		}
+
+		.inputBlock {
+			@apply w-80;
+		}
+	}
+
 	.top {
 		@apply w-92 flex items-center justify-between mb-1;
 

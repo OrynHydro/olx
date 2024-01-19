@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import Field from '@/components/ui/field/Field'
 import { useAuth } from '@/hooks/useAuth'
 import CategoryModal from './category-modal/CategoryModal'
+import { LocationData } from '@/helpers/location.data'
 
 const Adding: FC = () => {
 	const user = useAuth()
@@ -67,6 +68,11 @@ const Adding: FC = () => {
 		}
 	}
 
+	const locationOptions = LocationData.map((location, index) => ({
+		value: index,
+		label: `${location.city}, ${location.region}`,
+	}))
+
 	return (
 		<div className='wrapper'>
 			<div className={s.container}>
@@ -114,6 +120,8 @@ const Adding: FC = () => {
 							required
 							adding
 							control={control}
+							options={locationOptions}
+							placeholder='Назва міста й індекс'
 						/>
 					</div>
 					<div className={s.block}>
@@ -142,7 +150,14 @@ const Adding: FC = () => {
 				</form>
 			</div>
 			{activeModal && (
-				<CategoryModal active={activeModal} setActive={setActiveModal} />
+				<CategoryModal
+					active={activeModal}
+					setActive={setActiveModal}
+					formRegister={formRegister}
+					errors={errors}
+					value={categoryValue}
+					control={control}
+				/>
 			)}
 		</div>
 	)

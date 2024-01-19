@@ -23,6 +23,7 @@ interface IField
 	adding?: boolean
 	control?: Control<any>
 	disabled?: boolean
+	options?: Array<{ value: string | number; label: string; data?: string }>
 }
 
 const Field = forwardRef<HTMLInputElement, IField>(function Comp(
@@ -35,6 +36,7 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 		adding,
 		control,
 		disabled,
+		options,
 		...rest
 	},
 	ref
@@ -43,14 +45,19 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 	const [hover, setHover] = useState<boolean>(false)
 
 	return (
-		<div className={s.field}>
+		<div
+			className={placeholder === 'Пошук' ? `${s.field} ${s.search}` : s.field}
+		>
 			<div className={adding ? `${s.top} ${s.adding}` : s.top}>
-				<label>
-					<h1 className={s.title}>
-						{label}
-						{required && <span>*</span>}
-					</h1>
-				</label>
+				{label !== 'Пошук' && (
+					<label>
+						<h1 className={s.title}>
+							{label}
+							{required && <span>*</span>}
+						</h1>
+					</label>
+				)}
+
 				{label === 'Опис' && (
 					<span className={s.counter}>{value?.length || 0}/9000</span>
 				)}
@@ -84,12 +91,17 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 							)}
 						/>
 					) : (
-						label === 'Місцезнаходження' && (
+						options && (
 							<Controller
-								name='location'
+								name={label}
 								control={control}
 								render={({ field }) => (
-									<CustomSelect name={field.name} control={control} />
+									<CustomSelect
+										name={field.name}
+										control={control}
+										options={options}
+										placeholder={placeholder}
+									/>
 								)}
 							/>
 						)

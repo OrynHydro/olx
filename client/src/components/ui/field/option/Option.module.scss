@@ -6,14 +6,15 @@
 	}
 
 	&::after {
-		@apply absolute bottom-0 w-80 h-0.25 bg-light-gray content-empty;
+		@apply absolute bottom-0 w-52 h-0.25 bg-light-gray content-empty;
 	}
 
 	.title {
 		@apply text-base font-normal text-black;
 	}
 
-	.subTitle {
+	.subTitle,
+	.data {
 		@apply text-sm font-light text-gray;
 	}
 }
