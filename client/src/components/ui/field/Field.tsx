@@ -7,9 +7,6 @@ import { IoMdCheckmark } from 'react-icons/io'
 import { FiEye } from 'react-icons/fi'
 import { FiEyeOff } from 'react-icons/fi'
 import { Control, Controller } from 'react-hook-form'
-import Select from 'react-select'
-import Option from './option/Option'
-import { LocationData } from '@/helpers/location.data'
 import CustomSelect from './select/Select'
 
 interface IField
@@ -93,7 +90,7 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 					) : (
 						options && (
 							<Controller
-								name={label}
+								name={label === 'Місцезнаходження' ? 'location' : 'search'}
 								control={control}
 								render={({ field }) => (
 									<CustomSelect
@@ -132,7 +129,7 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 					/>
 				)}
 
-				{!disabled && (
+				{!disabled && label !== 'Пошук' && (
 					<div
 						className={label === 'Опис' ? `${s.icons} ${s.textarea}` : s.icons}
 					>

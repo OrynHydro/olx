@@ -8,6 +8,8 @@ import Field from '@/components/ui/field/Field'
 import { useAuth } from '@/hooks/useAuth'
 import CategoryModal from './category-modal/CategoryModal'
 import { LocationData } from '@/helpers/location.data'
+import CategoryItem from '@/components/ui/category-item/CategoryItem'
+import { categoriesData } from '@/helpers/category.data'
 
 const Adding: FC = () => {
 	const user = useAuth()
@@ -20,6 +22,7 @@ const Adding: FC = () => {
 		setError,
 		reset,
 		control,
+		setValue,
 	} = useForm<TAddingSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(addingSchema),
@@ -31,6 +34,7 @@ const Adding: FC = () => {
 	const sellerEmailValue = user?.email ?? ''
 	const sellerPhoneValue = watch('sellerPhone')
 	const locationValue = watch('location')
+	const searchValue = watch('search')
 
 	const [sellerNameValue, setSellerNameValue] = useState<string>('')
 
@@ -73,6 +77,17 @@ const Adding: FC = () => {
 		label: `${location.city}, ${location.region}`,
 	}))
 
+	useEffect(() => {
+		if (searchValue) {
+			setActiveModal(false)
+			setValue('category', searchValue)
+		}
+	}, [searchValue])
+
+	const selectedCategory = categoriesData.find(
+		item => item.title === searchValue?.data.split(' / ')[0]
+	)
+
 	return (
 		<div className='wrapper'>
 			<div className={s.container}>
@@ -89,15 +104,29 @@ const Adding: FC = () => {
 							required
 							adding
 						/>
-						<Field
-							{...formRegister('category')}
-							label='Категорія'
-							error={errors.category?.message}
-							value={categoryValue}
-							placeholder='Виберіть категорію'
-							required
-							onClick={handleClick}
-						/>
+						{!searchValue ? (
+							<Field
+								{...formRegister('category')}
+								label='Категорія'
+								error={errors.category?.message}
+								value={categoryValue?.label || ''}
+								placeholder='Виберіть категорію'
+								required
+								onClick={handleClick}
+							/>
+						) : (
+							<CategoryItem
+								category={{
+									title: searchValue?.data,
+									img: selectedCategory?.img,
+									bgColor: selectedCategory?.bgColor,
+									color: selectedCategory?.color,
+								}}
+								activeModal={activeModal}
+								setActiveModal={setActiveModal}
+								subcategory={searchValue.label}
+							/>
+						)}
 					</div>
 					<div className={s.block}>
 						<Field
@@ -155,7 +184,7 @@ const Adding: FC = () => {
 					setActive={setActiveModal}
 					formRegister={formRegister}
 					errors={errors}
-					value={categoryValue}
+					value={searchValue}
 					control={control}
 				/>
 			)}

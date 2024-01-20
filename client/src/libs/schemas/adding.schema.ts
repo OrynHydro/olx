@@ -13,7 +13,16 @@ export const addingSchema = z.object({
 		.max(70, {
 			message: 'У заголовку може бути не більше 70 символів',
 		}),
-	category: z.string(),
+	category: z.object({
+		value: z.string(),
+		label: z.string(),
+		data: z.string(),
+	}),
+	search: z.object({
+		value: z.string(),
+		label: z.string(),
+		data: z.string(),
+	}),
 	photo: z.array(z.string()).min(1, {
 		message: 'Додайте хоча б одне фото',
 	}),

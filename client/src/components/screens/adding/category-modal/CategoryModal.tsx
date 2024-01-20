@@ -3,7 +3,12 @@ import s from './CategoryModal.module.scss'
 import { RxCross1 } from 'react-icons/rx'
 import { categoriesData } from '@/helpers/category.data'
 import CategoryItem from '@/components/ui/category-item/CategoryItem'
-import { Control, FieldErrors, UseFormRegister } from 'react-hook-form'
+import {
+	Control,
+	FieldErrors,
+	SetFieldValue,
+	UseFormRegister,
+} from 'react-hook-form'
 import { TAddingSchema } from '@/libs/schemas/adding.schema'
 import Field from '@/components/ui/field/Field'
 import { ICategory } from '@/interfaces/category.interface'
@@ -13,7 +18,7 @@ interface ICategoryModal {
 	setActive: (active: boolean) => void
 	formRegister: UseFormRegister<TAddingSchema>
 	errors: FieldErrors<TAddingSchema>
-	value: string
+	value: { value: string; data: string; label: string | undefined }
 	control: Control<any>
 }
 
@@ -75,10 +80,10 @@ const CategoryModal: FC<ICategoryModal> = ({
 						/>
 					</div>
 					<Field
-						{...formRegister('category')}
+						{...formRegister('search')}
 						label='Пошук'
-						error={errors.category?.message}
-						value={value}
+						error={errors.search?.message}
+						value={value?.label || ''}
 						placeholder='Пошук'
 						control={control}
 						options={categoryOptions}
@@ -92,7 +97,11 @@ const CategoryModal: FC<ICategoryModal> = ({
 							)
 							.map((category, index) => (
 								<div key={index}>
-									<CategoryItem category={category} isModal />
+									<CategoryItem
+										category={category}
+										activeModal={active}
+										setActiveModal={setActive}
+									/>
 								</div>
 							))}
 					</div>

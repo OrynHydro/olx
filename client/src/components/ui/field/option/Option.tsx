@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import s from './Option.module.scss'
 import { OptionProps } from 'react-select'
+import { SetFieldValue } from 'react-hook-form'
 
-interface IOption {
+export interface IOption {
 	data?: string
 }
 

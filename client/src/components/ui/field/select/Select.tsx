@@ -1,8 +1,14 @@
 import React from 'react'
 import Select from 'react-select'
-import { useController, FieldValues, FieldPath, Control } from 'react-hook-form'
+import {
+	useController,
+	FieldValues,
+	FieldPath,
+	Control,
+	SetFieldValue,
+} from 'react-hook-form'
 import { LocationData } from '@/helpers/location.data'
-import Option from '../option/Option'
+import Option, { IOption } from '../option/Option'
 
 import { IoSearchSharp } from 'react-icons/io5'
 
@@ -40,13 +46,13 @@ const CustomSelect = <TFieldValues extends FieldValues = FieldValues>({
 	}
 
 	return (
-		<div>
-			<IoSearchSharp className='relative z-30 top-8 left-3' fontSize={20} />
+		<div className='relative'>
+			<IoSearchSharp className='absolute z-30 top-3 left-3' fontSize={20} />
 			<Select
 				{...field}
 				options={options}
 				placeholder={placeholder}
-				components={{ Option: Option }}
+				components={{ Option }}
 				filterOption={(option, inputValue) =>
 					option.label
 						.split(', ')[0]

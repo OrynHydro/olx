@@ -10,6 +10,7 @@ const constants = {
 	blue: '#3a77ff',
 	red: '#ff5636',
 	'title-hover': '#00338A',
+	'dark-green': 'rgb(64, 99, 103)',
 }
 
 const config: Config = {
@@ -80,6 +81,9 @@ const config: Config = {
 			addUtilities({
 				'.transition-200': {
 					transition: '0.2s ease-in-out',
+				},
+				'.transition-width-200': {
+					transition: 'width 0.2s ease-in-out',
 				},
 				'.transition-300': {
 					transition: '0.3s ease-in-out',

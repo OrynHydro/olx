@@ -2,10 +2,36 @@
 	@apply flex flex-col items-center gap-4 rounded-full h-36 cursor-pointer mx-auto;
 
 	&.modal {
-		@apply flex-row p-4 h-20 w-80 rounded-md;
+		@apply flex-row p-4 h-20 w-80 rounded-md mx-0;
 	}
 
 	.imgBlock {
 		@apply rounded-full;
+	}
+
+	.chosen {
+		@apply flex flex-col text-left w-72;
+	}
+
+	.change {
+		@apply text-cyan text-base font-bold relative;
+
+		&::after {
+			@apply absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-cyan content-empty transition-width-200;
+		}
+
+		&:hover {
+			&::after {
+				@apply w-1/2;
+			}
+		}
+
+		&:active {
+			@apply text-gray;
+
+			&::after {
+				@apply bg-gray;
+			}
+		}
 	}
 }
