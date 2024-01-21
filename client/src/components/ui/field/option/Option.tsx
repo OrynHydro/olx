@@ -10,9 +10,9 @@ export interface IOption {
 const Option: FC<OptionProps<IOption>> = ({ innerProps, label, data }) => {
 	return (
 		<div {...innerProps} className={s.option}>
-			<h2 className={s.title}>{label.split(', ')[0]}</h2>
+			<h2 className={s.title}>{!data ? label.split(', ')[0] : label}</h2>
 
-			<span className={s.subTitle}>{label.split(', ')[1]}</span>
+			{!data && <span className={s.subTitle}>{label.split(', ')[1]}</span>}
 
 			{data && <span className={s.data}>{data.data}</span>}
 		</div>

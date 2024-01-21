@@ -11,6 +11,8 @@ interface ICategoryItemProps {
 	activeModal?: boolean
 	setActiveModal?: (value: boolean) => void
 	subcategory?: string | null
+	activeCategories?: ICategory[]
+	setActiveCategories?: React.Dispatch<React.SetStateAction<ICategory[]>>
 }
 
 const CategoryItem: FC<ICategoryItemProps> = ({
@@ -20,6 +22,8 @@ const CategoryItem: FC<ICategoryItemProps> = ({
 	activeModal,
 	setActiveModal,
 	subcategory,
+	activeCategories,
+	setActiveCategories,
 }) => {
 	const PF = process.env.NEXT_PUBLIC_FOLDER
 
@@ -31,8 +35,15 @@ const CategoryItem: FC<ICategoryItemProps> = ({
 				width: subcategory ? '480px' : '',
 			}}
 			onClick={() => {
-				if (category.subcategories) {
-					if (active && active.title === category.title && setActive) {
+				if (setActiveCategories) {
+					setActiveCategories([category])
+				} else if (category.subcategories) {
+					if (
+						active &&
+						active.title === category.title &&
+						setActive &&
+						!setActiveModal
+					) {
 						setActive(null)
 					} else if (setActive) {
 						setActive(category)
@@ -56,27 +67,34 @@ const CategoryItem: FC<ICategoryItemProps> = ({
 					/>
 				</div>
 			)}
-			<div className={s.chosen}>
-				{subcategory && (
-					<span className={'title inline-block hover:text-cyan'}>
-						{subcategory}
-					</span>
-				)}
+			{subcategory ? (
+				<>
+					<div className={s.chosen}>
+						<span className={'title inline-block hover:text-cyan'}>
+							{subcategory}
+						</span>
 
+						<span
+							className={
+								'title inline-block text-sm font-normal text-dark-green hover:text-dark-green'
+							}
+						>
+							{category.title}
+						</span>
+					</div>
+					<span className={s.change}>Змінити</span>
+				</>
+			) : (
 				<span
 					className={
 						setActiveModal
-							? subcategory
-								? 'title inline-block text-sm font-normal text-dark-green hover:text-dark-green'
-								: 'title inline-block font-normal hover:text-title-hover'
-							: 'title inline-block w-24'
+							? 'title inline-block font-normal hover:text-title-hover text-center'
+							: 'title inline-block w-24 text-center'
 					}
 				>
 					{category.title}
 				</span>
-			</div>
-
-			{subcategory && <span className={s.change}>Змінити</span>}
+			)}
 		</div>
 	)
 }

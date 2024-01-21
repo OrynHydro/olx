@@ -11,6 +11,8 @@ const constants = {
 	red: '#ff5636',
 	'title-hover': '#00338A',
 	'dark-green': 'rgb(64, 99, 103)',
+	'category-hover': '#CEDDFF',
+	'border-gray': '#D8DFE0',
 }
 
 const config: Config = {

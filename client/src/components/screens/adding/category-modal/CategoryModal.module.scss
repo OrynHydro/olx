@@ -26,6 +26,50 @@
 				}
 			}
 
+			.menu {
+				@apply flex items-center h-dropdown w-full mt-6;
+
+				.column {
+					@apply h-full flex flex-col w-1/3 overflow-hidden overflow-y-auto px-3;
+
+					scrollbar-width: thin;
+					scrollbar-color: #333333 #ffffff;
+
+					&::-webkit-scrollbar {
+						width: 2px;
+						border-radius: 50%;
+					}
+
+					&::-webkit-scrollbar-thumb {
+						background-color: rgb(0, 47, 52);
+					}
+
+					&::-webkit-scrollbar-track {
+						background-color: #f2f4f5;
+					}
+
+					.category {
+						@apply w-full p-4 flex items-center justify-between cursor-pointer transition-200 border-bottom-1-border-gray;
+
+						&.active {
+							@apply bg-category-hover;
+						}
+
+						&:hover {
+							@apply bg-category-hover;
+						}
+
+						> span {
+							@apply text-cyan text-base;
+						}
+
+						> svg {
+							@apply text-2xl text-cyan;
+						}
+					}
+				}
+			}
+
 			.categories {
 				@apply flex flex-wrap gap-6 mt-6 w-full;
 			}

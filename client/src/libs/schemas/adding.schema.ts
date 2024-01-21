@@ -18,11 +18,13 @@ export const addingSchema = z.object({
 		label: z.string(),
 		data: z.string(),
 	}),
-	search: z.object({
-		value: z.string(),
-		label: z.string(),
-		data: z.string(),
-	}),
+	search: z
+		.object({
+			value: z.string(),
+			label: z.string(),
+			data: z.string(),
+		})
+		.optional(),
 	photo: z.array(z.string()).min(1, {
 		message: 'Додайте хоча б одне фото',
 	}),

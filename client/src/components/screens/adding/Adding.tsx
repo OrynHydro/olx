@@ -10,6 +10,8 @@ import CategoryModal from './category-modal/CategoryModal'
 import { LocationData } from '@/helpers/location.data'
 import CategoryItem from '@/components/ui/category-item/CategoryItem'
 import { categoriesData } from '@/helpers/category.data'
+import { ICategory } from '@/interfaces/category.interface'
+import useCategoryOptions from '@/hooks/useCategoryOptions'
 
 const Adding: FC = () => {
 	const user = useAuth()
@@ -19,10 +21,10 @@ const Adding: FC = () => {
 		formState: { errors, isValid },
 		handleSubmit,
 		watch,
-		setError,
 		reset,
 		control,
 		setValue,
+		resetField,
 	} = useForm<TAddingSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(addingSchema),
@@ -77,16 +79,50 @@ const Adding: FC = () => {
 		label: `${location.city}, ${location.region}`,
 	}))
 
+	const [menuSelected, setMenuSelected] = useState<ICategory | undefined>(
+		undefined
+	)
+
 	useEffect(() => {
 		if (searchValue) {
 			setActiveModal(false)
 			setValue('category', searchValue)
+
+			const category = categoriesData.find(
+				item => item.title === searchValue?.data.split(' / ')[0]
+			)
+			setSelectedCategory(category)
+			resetField('search')
 		}
 	}, [searchValue])
 
-	const selectedCategory = categoriesData.find(
-		item => item.title === searchValue?.data.split(' / ')[0]
-	)
+	const { categoryOptions } = useCategoryOptions()
+
+	useEffect(() => {
+		if (menuSelected) {
+			setActiveModal(false)
+			const label = categoryOptions.find(
+				item => item.label === menuSelected.title
+			)
+
+			const category = {
+				value: menuSelected.title,
+				label: menuSelected.title,
+				data: label?.data || menuSelected.title,
+			}
+
+			setValue('category', category)
+
+			const value = categoriesData.find(
+				item => item.title === category?.data.split(' / ')[0]
+			)
+			setSelectedCategory(value)
+		}
+	}, [menuSelected])
+
+	const [selectedCategory, setSelectedCategory] = useState<
+		ICategory | undefined
+	>(undefined)
 
 	return (
 		<div className='wrapper'>
@@ -104,28 +140,35 @@ const Adding: FC = () => {
 							required
 							adding
 						/>
-						{!searchValue ? (
+						{!categoryValue ? (
 							<Field
 								{...formRegister('category')}
 								label='Категорія'
 								error={errors.category?.message}
-								value={categoryValue?.label || ''}
+								value={categoryValue}
 								placeholder='Виберіть категорію'
 								required
 								onClick={handleClick}
 							/>
 						) : (
-							<CategoryItem
-								category={{
-									title: searchValue?.data,
-									img: selectedCategory?.img,
-									bgColor: selectedCategory?.bgColor,
-									color: selectedCategory?.color,
-								}}
-								activeModal={activeModal}
-								setActiveModal={setActiveModal}
-								subcategory={searchValue.label}
-							/>
+							<div>
+								<label>
+									<h1 className={s.fieldTitle}>
+										Категорія<span>*</span>
+									</h1>
+								</label>
+								<CategoryItem
+									category={{
+										title: categoryValue?.data,
+										img: selectedCategory?.img,
+										bgColor: selectedCategory?.bgColor,
+										color: selectedCategory?.color,
+									}}
+									activeModal={activeModal}
+									setActiveModal={setActiveModal}
+									subcategory={categoryValue.label}
+								/>
+							</div>
 						)}
 					</div>
 					<div className={s.block}>
@@ -186,6 +229,7 @@ const Adding: FC = () => {
 					errors={errors}
 					value={searchValue}
 					control={control}
+					setMenuSelected={setMenuSelected}
 				/>
 			)}
 		</div>
