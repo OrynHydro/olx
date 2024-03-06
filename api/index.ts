@@ -9,6 +9,7 @@ import path from 'path'
 import authRoute from './routes/auth'
 import mailgunRoute from './routes/mailgun'
 import userRoute from './routes/users'
+import uploadRoute from './routes/upload'
 
 // app config
 
@@ -31,5 +32,6 @@ MongoConnect()
 app.use('/auth', authRoute)
 app.use('/mailgun', mailgunRoute)
 app.use('/users', userRoute)
+app.use('/upload', uploadRoute)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))

@@ -37,6 +37,7 @@ const Adding: FC = () => {
 	const sellerPhoneValue = watch('sellerPhone')
 	const locationValue = watch('location')
 	const searchValue = watch('search')
+	const photosValue = watch('photos')
 
 	const [sellerNameValue, setSellerNameValue] = useState<string>('')
 
@@ -170,6 +171,17 @@ const Adding: FC = () => {
 								/>
 							</div>
 						)}
+					</div>
+					<div className={s.block}>
+						<h2 className={s.title}>Фото</h2>
+						<Field
+							{...formRegister('photos')}
+							label='Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок фото.'
+							error={errors.photos?.message}
+							value={descValue}
+							adding
+							control={control}
+						/>
 					</div>
 					<div className={s.block}>
 						<Field
