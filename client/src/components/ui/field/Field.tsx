@@ -103,6 +103,14 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 							/>
 						)
 					)
+				) : label ===
+				  'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок фото.' ? (
+					<input
+						className={error ? `${s.input} ${s.error}` : s.input}
+						{...rest}
+						ref={ref}
+						type={'file'}
+					/>
 				) : (
 					<input
 						className={
@@ -153,7 +161,10 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 									color={hover ? '#002F34' : '#406367'}
 								/>
 							))}
-						{value && !error ? (
+						{value &&
+						!error &&
+						label !==
+							'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок фото.' ? (
 							<IoMdCheckmark
 								className={s.icon}
 								fontSize={24}

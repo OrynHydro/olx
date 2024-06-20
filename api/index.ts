@@ -10,6 +10,7 @@ import authRoute from './routes/auth'
 import mailgunRoute from './routes/mailgun'
 import userRoute from './routes/users'
 import uploadRoute from './routes/upload'
+import postRoute from './routes/post'
 
 // app config
 
@@ -33,5 +34,6 @@ app.use('/auth', authRoute)
 app.use('/mailgun', mailgunRoute)
 app.use('/users', userRoute)
 app.use('/upload', uploadRoute)
+app.use('/post', postRoute)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))

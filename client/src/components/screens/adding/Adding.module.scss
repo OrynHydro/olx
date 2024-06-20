@@ -18,6 +18,18 @@
 			.fieldTitle {
 				@apply text-sm text-cyan;
 			}
+
+			&.right {
+				@apply items-end;
+
+				button {
+					@apply px-8 py-3 bg-cyan text-white font-bold rounded-md transition-200;
+
+					&:hover {
+						@apply bg-cyan/80;
+					}
+				}
+			}
 		}
 	}
 }

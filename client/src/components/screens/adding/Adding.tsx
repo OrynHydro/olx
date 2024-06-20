@@ -2,7 +2,7 @@
 import { FC, useEffect, useState } from 'react'
 import s from './Adding.module.scss'
 import { TAddingSchema, addingSchema } from '@/libs/schemas/adding.schema'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Field from '@/components/ui/field/Field'
 import { useAuth } from '@/hooks/useAuth'
@@ -12,6 +12,7 @@ import CategoryItem from '@/components/ui/category-item/CategoryItem'
 import { categoriesData } from '@/helpers/category.data'
 import { ICategory } from '@/interfaces/category.interface'
 import useCategoryOptions from '@/hooks/useCategoryOptions'
+import axios from 'axios'
 
 const Adding: FC = () => {
 	const user = useAuth()
@@ -125,11 +126,17 @@ const Adding: FC = () => {
 		ICategory | undefined
 	>(undefined)
 
+	console.log(photosValue)
+
+	const onSubmit: SubmitHandler<TAddingSchema> = async data => {
+		await axios.post('/api/post', data)
+	}
+
 	return (
 		<div className='wrapper'>
 			<div className={s.container}>
 				<h1 className={s.title}>Створити оголошення</h1>
-				<form className={s.main}>
+				<form className={s.main} onSubmit={handleSubmit(onSubmit)}>
 					<div className={s.block}>
 						<h2 className={s.title}>Опишіть у подробицях</h2>
 						<Field
@@ -178,9 +185,11 @@ const Adding: FC = () => {
 							{...formRegister('photos')}
 							label='Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок фото.'
 							error={errors.photos?.message}
-							value={descValue}
+							value={
+								photosValue &&
+								photosValue.name + photosValue.type + ' ' + photosValue.size
+							}
 							adding
-							control={control}
 						/>
 					</div>
 					<div className={s.block}>
@@ -230,6 +239,9 @@ const Adding: FC = () => {
 							error={errors.sellerPhone?.message}
 							value={sellerPhoneValue}
 						/>
+					</div>
+					<div className={`${s.block} ${s.right}`}>
+						<button>Опублікувати</button>
 					</div>
 				</form>
 			</div>

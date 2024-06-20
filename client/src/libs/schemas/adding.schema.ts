@@ -33,18 +33,19 @@ export const addingSchema = z.object({
 			data: z.string(),
 		})
 		.optional(),
-	photos: z.array(
-		z
-			.object({
-				size: z.number(),
-				type: z.string(),
-			})
-			.refine(file => file?.size <= MAX_FILE_SIZE, `Max image size is 5MB.`)
-			.refine(
-				file => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-				'Only .jpg, .jpeg, .png and .webp formats are supported.'
-			)
-	),
+	photos: z
+		.object({
+			name: z.string(),
+			type: z.string(),
+			size: z.number(),
+		})
+		.refine(file => file?.size !== undefined && file.size <= MAX_FILE_SIZE, {
+			message: `Max image size is ${MAX_FILE_SIZE}MB.`,
+		})
+		.refine(
+			file => file !== undefined && ACCEPTED_IMAGE_TYPES.includes(file.type),
+			'Only .jpg, .jpeg, .png and .webp formats are supported.'
+		),
 	desc: z
 		.string()
 		.min(40, {
