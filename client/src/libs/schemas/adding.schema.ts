@@ -34,18 +34,14 @@ export const addingSchema = z.object({
 		})
 		.optional(),
 	photos: z
-		.object({
-			name: z.string(),
-			type: z.string(),
-			size: z.number(),
+		.custom<FileList>()
+		.transform(file => file && file.length > 0 && file.item(0))
+		.refine(file => !file || (!!file && file.size <= 10 * 1024 * 1024), {
+			message: 'The profile picture must be a maximum of 10MB.',
 		})
-		.refine(file => file?.size !== undefined && file.size <= MAX_FILE_SIZE, {
-			message: `Max image size is ${MAX_FILE_SIZE}MB.`,
-		})
-		.refine(
-			file => file !== undefined && ACCEPTED_IMAGE_TYPES.includes(file.type),
-			'Only .jpg, .jpeg, .png and .webp formats are supported.'
-		),
+		.refine(file => !file || (!!file && file.type?.startsWith('image')), {
+			message: 'Only images are allowed to be sent.',
+		}),
 	desc: z
 		.string()
 		.min(40, {
@@ -60,9 +56,6 @@ export const addingSchema = z.object({
 				'Будь ласка, вкажіть ціну. Зверніть увагу, що вказувати нереальні ціни або умови заборонено.',
 		})
 		.optional(),
-	sellerType: z.enum(['private', 'business']),
-	condition: z.enum(['utilized', 'new']),
-	autoRenewal: z.boolean(),
 	location: z
 		.object({
 			label: z.string(),

@@ -41,6 +41,8 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 	const [hind, setHind] = useState<boolean>(false)
 	const [hover, setHover] = useState<boolean>(false)
 
+	// console.log(value)
+
 	return (
 		<div
 			className={placeholder === 'Пошук' ? `${s.field} ${s.search}` : s.field}
@@ -105,12 +107,15 @@ const Field = forwardRef<HTMLInputElement, IField>(function Comp(
 					)
 				) : label ===
 				  'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок фото.' ? (
-					<input
-						className={error ? `${s.input} ${s.error}` : s.input}
-						{...rest}
-						ref={ref}
-						type={'file'}
-					/>
+					<>
+						<input
+							className={error ? `${s.input} ${s.error}` : s.input}
+							{...rest}
+							ref={ref}
+							type={'file'}
+						/>
+						{error ? error : ''}
+					</>
 				) : (
 					<input
 						className={

@@ -22,8 +22,8 @@
 			&.right {
 				@apply items-end;
 
-				button {
-					@apply px-8 py-3 bg-cyan text-white font-bold rounded-md transition-200;
+				.button {
+					@apply px-8 py-3 bg-cyan text-white font-bold rounded-md transition-200 cursor-pointer;
 
 					&:hover {
 						@apply bg-cyan/80;

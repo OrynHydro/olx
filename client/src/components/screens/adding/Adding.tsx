@@ -13,6 +13,7 @@ import { categoriesData } from '@/helpers/category.data'
 import { ICategory } from '@/interfaces/category.interface'
 import useCategoryOptions from '@/hooks/useCategoryOptions'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 const Adding: FC = () => {
 	const user = useAuth()
@@ -38,13 +39,13 @@ const Adding: FC = () => {
 	const sellerPhoneValue = watch('sellerPhone')
 	const locationValue = watch('location')
 	const searchValue = watch('search')
-	const photosValue = watch('photos')
 
 	const [sellerNameValue, setSellerNameValue] = useState<string>('')
 
 	useEffect(() => {
 		if (user) {
 			setSellerNameValue(user.username)
+			setValue('sellerName', user.username)
 		}
 	}, [user])
 
@@ -126,10 +127,37 @@ const Adding: FC = () => {
 		ICategory | undefined
 	>(undefined)
 
-	console.log(photosValue)
+	const router = useRouter()
 
 	const onSubmit: SubmitHandler<TAddingSchema> = async data => {
-		await axios.post('/api/post', data)
+		try {
+			const formData = new FormData()
+			const fileName =
+				data.photos instanceof File
+					? `${Math.random().toString(16).slice(2)}.${
+							data.photos.name.split('.')[1]
+					  }`
+					: ''
+
+			formData.append('name', fileName)
+			formData.append('files', data.photos as File)
+
+			console.log(fileName)
+
+			await axios.post('/api/upload', formData)
+			await axios.post('/api/post', {
+				...data,
+				sellerEmail: sellerEmailValue,
+				photos: data.photos instanceof File ? fileName : '',
+				category: {
+					label: data.category.label,
+					data: data.category.data,
+				},
+			})
+			router.push('/')
+		} catch (err: any) {
+			console.log(err)
+		}
 	}
 
 	return (
@@ -185,10 +213,7 @@ const Adding: FC = () => {
 							{...formRegister('photos')}
 							label='Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок фото.'
 							error={errors.photos?.message}
-							value={
-								photosValue &&
-								photosValue.name + photosValue.type + ' ' + photosValue.size
-							}
+							value={''}
 							adding
 						/>
 					</div>
@@ -241,7 +266,7 @@ const Adding: FC = () => {
 						/>
 					</div>
 					<div className={`${s.block} ${s.right}`}>
-						<button>Опублікувати</button>
+						<input className={s.button} type='submit' value={'Опублікувати'} />
 					</div>
 				</form>
 			</div>
