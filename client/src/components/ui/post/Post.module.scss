@@ -1,0 +1,23 @@
+.post {
+	@apply bg-white shadow-md p-3 flex justify-between;
+
+	.info {
+		@apply flex items-center gap-2;
+
+		.image {
+			@apply w-52 h-36 object-cover;
+		}
+
+		.data {
+			@apply flex flex-col h-full justify-between;
+
+			.text {
+				@apply text-xs;
+			}
+		}
+	}
+
+	.price {
+		@apply text-base font-bold text-cyan;
+	}
+}

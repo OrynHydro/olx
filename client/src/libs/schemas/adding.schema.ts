@@ -51,11 +51,13 @@ export const addingSchema = z.object({
 			message: 'Опис повинен бути не довшим за 9000 знаків',
 		}),
 	price: z
-		.number({
+		.string({
 			invalid_type_error:
 				'Будь ласка, вкажіть ціну. Зверніть увагу, що вказувати нереальні ціни або умови заборонено.',
 		})
-		.optional(),
+		.refine(value => /^\d+$/.test(value) || value.toLowerCase() === 'обмін', {
+			message: 'Ціна повинна містити лише цифри або слово "обмін".',
+		}),
 	location: z
 		.object({
 			label: z.string(),

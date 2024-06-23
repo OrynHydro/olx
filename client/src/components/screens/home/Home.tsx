@@ -24,7 +24,7 @@ const Home: FC = () => {
 							onClick={() =>
 								!category.subcategories &&
 								category.link &&
-								router.push(category.link)
+								router.push(`/category/${category.link}`)
 							}
 							key={index}
 						>
@@ -50,7 +50,7 @@ const Home: FC = () => {
 								{active.subcategories.map((subcategory, index) => (
 									<Link
 										className={s.title}
-										href={`${active.link}${subcategory.link}`}
+										href={`/category/${active.link}${subcategory.link}`}
 										key={index}
 									>
 										<FaChevronRight />

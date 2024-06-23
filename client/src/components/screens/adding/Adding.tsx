@@ -14,6 +14,7 @@ import { ICategory } from '@/interfaces/category.interface'
 import useCategoryOptions from '@/hooks/useCategoryOptions'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import Button from '@/components/ui/button/Button'
 
 const Adding: FC = () => {
 	const user = useAuth()
@@ -39,6 +40,7 @@ const Adding: FC = () => {
 	const sellerPhoneValue = watch('sellerPhone')
 	const locationValue = watch('location')
 	const searchValue = watch('search')
+	const priceValue = watch('price')
 
 	const [sellerNameValue, setSellerNameValue] = useState<string>('')
 
@@ -154,6 +156,7 @@ const Adding: FC = () => {
 					data: data.category.data,
 				},
 			})
+			reset()
 			router.push('/')
 		} catch (err: any) {
 			console.log(err)
@@ -265,8 +268,17 @@ const Adding: FC = () => {
 							value={sellerPhoneValue}
 						/>
 					</div>
-					<div className={`${s.block} ${s.right}`}>
-						<input className={s.button} type='submit' value={'Опублікувати'} />
+					<div className={s.block}>
+						<h2 className={s.title}>Ціна</h2>
+						<Field
+							{...formRegister('price')}
+							label='Ви можете вказати будь-яку ціну або обмін'
+							error={errors.price?.message}
+							value={priceValue}
+						/>
+					</div>
+					<div className={s.block}>
+						<Button type='submit'>Опублікувати</Button>
 					</div>
 				</form>
 			</div>
